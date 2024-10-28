@@ -1,0 +1,140 @@
+.centered-app-content {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+
+}
+
+/** Nav Bar **/
+nav {
+  background-color: #1d2283
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333;
+  padding: 15em;
+  list-style: none;
+
+}
+
+nav ul li a {
+  color: white;
+  text-decoration-style: solid;
+  text-decoration: black;
+}
+
+nav ul li a:hover {
+  color: #f4f4f4;
+}
+
+/** Hero Section **/
+.hero {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  color: white;
+  text-align: center;
+}
+
+/** Services Section **/
+.services {
+  display: flex;
+  justify-content: space-around;
+  padding: 3em 0;
+}
+
+.service-card {
+  background-color: #f4f4f4;
+ align-items: center;
+  border-radius: 8px;
+  margin: 0;
+}
+
+/** Quote Section **/
+.quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgb(250, 247, 247);
+  height: 300px;
+  padding: 2em;
+}
+
+
+
+.cardDeck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 2em;
+}
+
+.card {
+  flex: 1 1 300px;
+  margin: 10px;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cardImgTop {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.cardText {
+  margin-bottom: 20px;
+}
+
+.btnPrimary {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #1d2283;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btnPrimary:hover {
+  background-color: #1d2283;
+}
+
+/** Footer **/
+footer {
+  background-color: #1d2283;
+  color: white;
+  padding: 2em;
+  display: flex;
+  justify-content: space-around;
+}
