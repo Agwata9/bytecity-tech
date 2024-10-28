@@ -5,15 +5,13 @@ const NavbarComponent: React.FC = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home" className="mx-auto" >
           <img
             src="./bytelogo.svg"
             width="50"
             height="50"
-            alt="ByteCity Tech Solutions logo"
-            className="d-inline-block align-top"
-          />
-      
+            alt="ByteCity Tech Solutions logo" /> 
+          &nbsp;&nbsp;&nbsp; ByteCity Tech Solutions
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">

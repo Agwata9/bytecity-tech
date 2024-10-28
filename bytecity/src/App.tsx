@@ -7,6 +7,7 @@ import Services from './components/Services';
 import Discover from './components/Discover';
 import TopBar from './components/TopBar';
 import Message from './components/Message';
+import CurrentOffers from './components/CurrentOffers';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       <AboutUs />
       <Discover />
       <Services />
+      <CurrentOffers/>
       <Footer />
     </div>
   );
