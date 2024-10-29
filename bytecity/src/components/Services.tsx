@@ -4,11 +4,9 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 const Services: React.FC = () => {
   const services = [
     { title: 'Web Development', text: 'Web Application Design and Development' },
-    { title: 'E-commerce', text: 'Client-Oriented Shopify and Magento solutions' },
-    { title: 'IT Staffing', text: 'Canada-based IT Experts. Global Dedicated Teams.' },
-    { title: 'Mobile Apps', text: 'Mobile App Solutions for small businesses' },
-    { title: 'Digital Marketing', text: 'Website Design, SEO, Social Media Marketing' },
-    { title: 'AI Chatbots', text: 'Engage Customers via AI-Powered Conversations' },
+    { title: 'Graphic & Design', text: 'Design of all kinds and bussiness branding ' },
+    { title: 'Social Media Management', text: 'Management of social media acounts, Social Media Marketing and Websites.' },
+
   ];
 
   return (

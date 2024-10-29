@@ -138,3 +138,35 @@ footer {
   display: flex;
   justify-content: space-around;
 }
+
+.card-hover {
+  background-color: #f8f9fa; /* Light background for the card */
+  border: 1px solid #dee2e6; /* Subtle border */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effects */
+}
+
+.card-hover:hover {
+  transform: scale(1.05); /* Scale up on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.plan-title {
+  font-size: 1.5rem; /* Larger font size for the title */
+  font-weight: bold; /* Bold title */
+  color: #343a40; /* Darker text color */
+  margin-bottom: 1rem; /* Space below the title */
+}
+
+.features-list {
+  margin-top: 1rem; /* Space above the feature list */
+  color: #495057; /* Dark gray color for features */
+}
+
+.features-list li {
+  padding: 0.25rem 0; /* Spacing between list items */
+}
+.card-title {
+  width: 100%; /* Ensure it takes the full width */
+  text-align: center; /* Center the text */
+}
