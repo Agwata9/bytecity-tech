@@ -261,3 +261,40 @@ h3 {
 p {
   font-size: 1rem;
 }
+
+
+/* Heroes */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* Adjust as needed for consistency */
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero .btn-warning {
+  color: white;
+  background-color: orange;
+  border-color: orange;
+}
+
+.hero .btn-warning:hover {
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+}

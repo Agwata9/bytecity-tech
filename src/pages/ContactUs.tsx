@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Hero from "../components/Hero";
+import ContactUsHeader from "../components/ContactUsHeader";
 
 const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ const ContactUs: React.FC = () => {
 
   return (
     <div>
-      <Hero />
+      <ContactUsHeader />
       <div className="container py-5">
         <div className="row">
           <div className="col-lg-6 mb-4">
@@ -83,19 +83,22 @@ const ContactUs: React.FC = () => {
           <div className="col-lg-6 mb-4">
             <h5 className="text-warning mb-4 display-6">Get In Touch</h5>
             <p className="fs-5">
-              <strong>Address:</strong> 123 ByteCity Tech Lane, City, Country
+              <strong>Address:</strong> Tom Mboya Street, Nairobi City, KE
             </p>
             <p className="fs-5">
               <strong>Phone:</strong> +254 777 439 049
             </p>
             <p className="fs-5">
-              <strong>Email:</strong> info@bytecitytech.com
+              <strong>Email:</strong> info@bytecity.tech
             </p>
 
             {/* Social Media Links */}
             <div className="d-flex justify-content-start">
               <a href="#" className="text-dark me-3 fs-5">
-                <i className="bi bi-facebook" style={{ fontSize: "1.5rem" }}></i>
+                <i
+                  className="bi bi-facebook"
+                  style={{ fontSize: "1.5rem" }}
+                ></i>
                 <span className="ms-2">Facebook</span>
               </a>
               <a href="#" className="text-dark me-3 fs-5">
@@ -103,11 +106,17 @@ const ContactUs: React.FC = () => {
                 <span className="ms-2">Twitter</span>
               </a>
               <a href="#" className="text-dark me-3 fs-5">
-                <i className="bi bi-linkedin" style={{ fontSize: "1.5rem" }}></i>
+                <i
+                  className="bi bi-linkedin"
+                  style={{ fontSize: "1.5rem" }}
+                ></i>
                 <span className="ms-2">LinkedIn</span>
               </a>
               <a href="#" className="text-dark fs-5">
-                <i className="bi bi-whatsapp" style={{ fontSize: "1.5rem" }}></i>
+                <i
+                  className="bi bi-whatsapp"
+                  style={{ fontSize: "1.5rem" }}
+                ></i>
                 <span className="ms-2">WhatsApp</span>
               </a>
             </div>

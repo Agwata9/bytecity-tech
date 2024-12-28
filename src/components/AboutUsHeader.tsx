@@ -1,35 +1,34 @@
 import React from 'react';
+import { Container, Button } from 'react-bootstrap';
 
 const AboutUsHeader: React.FC = () => {
   return (
-    <div
-      className="hero-container position-relative text-white"
+    <section
+      className="hero bg-dark d-flex align-items-center justify-content-center"
       style={{
         backgroundImage: 'url("work-hero-image.jpg")', // Replace with actual image path
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: '60vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
       }}
     >
-      <div className="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-60"></div>
-
-      <div className="container position-relative z-index-1">
-        <h1 className="display-4 text-light fw-bold">Our Team</h1>
-        <p className="lead mb-4">
-          We are ByteCity Tech Solutions, delivering innovative and tailor-made technology solutions for your business.
-        </p>
-        <a
-          href="/careers"
-          className="btn btn-orange btn-lg" // Custom class
-        >
-          Join Our Team
-        </a>
-      </div>
-    </div>
+      <div className="overlay"></div>
+      <Container className="text-center">
+        <div className="hero-content">
+          <h1 className="display-4 fw-bold mb-3">Our Team</h1>
+          <p className="lead mb-4">
+            We are ByteCity Tech Solutions, delivering innovative and tailor-made technology solutions for your business.
+          </p>
+          <Button
+            variant="warning"
+            size="lg"
+            className="px-5 py-3 fs-5 fw-bold rounded-3 shadow-sm"
+            href="/careers"
+          >
+            Join Our Team
+          </Button>
+        </div>
+      </Container>
+    </section>
   );
 };
 

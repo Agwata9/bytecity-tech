@@ -34,7 +34,7 @@ const Footer = () => {
           {/* Contact and Social Media */}
           <Col md={4} sm={6} className="mb-4">
             <h5 className="text-warning">Contact Us</h5>
-            <p className="text-light">📧 Email: <a href="mailto:bytecitytech.ke@gmail.com" className="text-light">bytecitytech.ke@gmail.com</a></p>
+            <p className="text-light">📧 Email: <a href="mailto:info@bytecity.tech" className="text-light">info@bytecity.tech</a></p>
             <p className="text-light">📞 Phone: <a href="tel:+254777439049" className="text-light">+254 777 439 049</a></p>
 
             <div>
