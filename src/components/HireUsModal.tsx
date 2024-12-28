@@ -4,9 +4,10 @@ import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 interface HireUsModalProps {
   show: boolean;
   handleClose: () => void;
+  handleDataSubmit: (data: any) => void; // Prop for handling data submission
 }
 
-const HireUsModal: React.FC<HireUsModalProps> = ({ show, handleClose }) => {
+const HireUsModal: React.FC<HireUsModalProps> = ({ show, handleClose, handleDataSubmit }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,7 +26,7 @@ const HireUsModal: React.FC<HireUsModalProps> = ({ show, handleClose }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData); // Handle form submission logic here
+    handleDataSubmit(formData); // Call the function passed from the parent component
   };
 
   return (
@@ -123,12 +124,12 @@ const HireUsModal: React.FC<HireUsModalProps> = ({ show, handleClose }) => {
             </Col>
           </Row>
 
-          <Form.Group controlId="formDescription" className="mt-3">
-            <Form.Label>Description</Form.Label>
+          <Form.Group controlId="formDescription" className ="mt-3">
+            <Form.Label>Description of Your Project</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
-              placeholder="Describe what you need help with"
+              placeholder="Describe your project in detail"
               name="description"
               value={formData.description}
               onChange={handleInputChange}
@@ -137,26 +138,11 @@ const HireUsModal: React.FC<HireUsModalProps> = ({ show, handleClose }) => {
             />
           </Form.Group>
 
-          <Form.Group controlId="formWhatsappLink" className="mt-3">
-            <Form.Label>Contact Us Through WhatsApp</Form.Label>
-            <a
-              href={`https://www.whatsapp.com/send?text=${encodeURIComponent(
-                "Contact Us Through WhatsApp"
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline-info d-block mb-2"
-            >
-              Contact Us Through WhatsApp
-            </a>
-          </Form.Group>
-
-          <div className="d-flex justify-content-center mt-4">
-            <Button
-              variant="warning"
-              type="submit" // Ensures it triggers the form submit
-              className="d-block px-5 py-3"
-            >
+          <div className="d-flex justify-content-end mt-4">
+            <Button variant="secondary" onClick={handleClose} className="me-2">
+              Close
+            </Button>
+            <Button variant="primary" type="submit">
               Submit
             </Button>
           </div>
