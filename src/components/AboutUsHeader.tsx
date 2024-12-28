@@ -1,4 +1,3 @@
-// AboutUsHeader.tsx
 import React from 'react';
 
 const AboutUsHeader: React.FC = () => {
@@ -24,9 +23,8 @@ const AboutUsHeader: React.FC = () => {
           We are ByteCity Tech Solutions, delivering innovative and tailor-made technology solutions for your business.
         </p>
         <a
-          href="#"
-          className="btn btn-primary btn-lg"
-          onClick={() => window.location.href = '/careers'}
+          href="/careers"
+          className="btn btn-orange btn-lg" // Custom class
         >
           Join Our Team
         </a>

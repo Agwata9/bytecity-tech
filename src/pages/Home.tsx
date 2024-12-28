@@ -15,6 +15,12 @@ const Home: React.FC = () => {
   const handleShowModal = () => setShowHireUsModal(true);
   const handleCloseModal = () => setShowHireUsModal(false);
 
+  const handleDataSubmit = (data: any) => {
+    console.log("Form data submitted:", data);
+    // Handle form submission here (e.g., send data to API or backend)
+    setShowHireUsModal(false); // Close the modal after submission
+  };
+
   return (
     <div>
       <Hero />
@@ -24,7 +30,11 @@ const Home: React.FC = () => {
       <Message />
       <WhyUs />
       <TrainingHero />
-      <HireUsModal show={showHireUsModal} handleClose={handleCloseModal} />
+      <HireUsModal
+        show={showHireUsModal}
+        handleClose={handleCloseModal}
+        handleDataSubmit={handleDataSubmit} // Pass handleDataSubmit prop
+      />
       <PortfolioGallery />
     </div>
   );

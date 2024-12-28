@@ -70,8 +70,8 @@ const Careers: React.FC = () => {
             <h2 className="text-warning text-center mb-4 display-6">How to Apply</h2>
             <p className="text-center text-muted fs-5">
               Send your resume and cover letter to{" "}
-              <a href="mailto:careers@bytecitytech.com" className="text-warning">
-                careers@bytecitytech.com
+              <a href="mailto:careers@bytecity.tech" className="text-warning">
+                careers@bytecity.tech
               </a>.
             </p>
           </Col>

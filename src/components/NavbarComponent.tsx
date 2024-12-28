@@ -18,14 +18,14 @@ const NavbarComponent: React.FC = () => {
       expanded={expanded}
     >
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" onClick={closeNavbar}>
           <img
             src="./bytelogo.svg"
             width="50"
             height="50"
             alt="ByteCity Tech Solutions logo"
           />
-          &nbsp; ByteCity Tech Solutions
+          &nbsp; ByteCity Tech
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" onClick={handleToggle} />
         <Navbar.Collapse id="navbar-nav">

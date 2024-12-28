@@ -1,14 +1,13 @@
 import React from "react";
-import {  Row, Col, ListGroup, ListGroupItem, } from "react-bootstrap";
+import { Row, Col, ListGroup, ListGroupItem } from "react-bootstrap";
 import { FaCheckCircle } from "react-icons/fa"; // For the checkmark icon
 import OurServicesHeader from "../components/OurServicesHeader";
 
 const OurServices: React.FC = () => {
   return (
     <div>
-       <OurServicesHeader /> {/* Hero Header for Our Services */}
+      <OurServicesHeader /> {/* Hero Header for Our Services */}
     
-
       {/* Section 1: Graphic & Design */}
       <div className="container py-5">
         <div className="text-center mb-5">
@@ -176,6 +175,18 @@ const OurServices: React.FC = () => {
                 <ListGroupItem className="d-flex align-items-center">
                   <FaCheckCircle className="check-icon me-3" />
                   Introduction to Photography and Video Shooting (Basic Techniques & Skills)
+                </ListGroupItem>
+                <ListGroupItem className="d-flex align-items-center">
+                  <FaCheckCircle className="check-icon me-3" />
+                  Professional Writing (Corporate communications, legal documents, business reports)
+                </ListGroupItem>
+                <ListGroupItem className="d-flex align-items-center">
+                  <FaCheckCircle className="check-icon me-3" />
+                  Graphic Design (Learn to use Adobe Creative Suite for branding, logos, and more)
+                </ListGroupItem>
+                <ListGroupItem className="d-flex align-items-center">
+                  <FaCheckCircle className="check-icon me-3" />
+                  Python Data Analysis (Manipulate and analyze datasets with Pandas, NumPy, and more)
                 </ListGroupItem>
               </ListGroup>
             </Col>

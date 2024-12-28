@@ -38,7 +38,7 @@ const trainingData = [
     title: 'Professional Writing',
     description:
       'Our Professional Writing course covers essential skills for effective communication in a corporate environment. You will learn to craft internal corporate communications, legal documents, business reports, policies, speeches, and scripts. This course is designed for professionals looking to enhance their writing skills and ensure clarity and professionalism in their written communications.',
-    image: 'professional-writing.jpg', // Make sure to add an appropriate image for this course
+    image: 'professional-writing.jpg',
     buttonText: 'Enroll Now',
     reverse: false,
   },
