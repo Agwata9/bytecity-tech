@@ -36,6 +36,7 @@ const Footer = () => {
             <h5 className="text-warning">Contact Us</h5>
             <p className="text-light">📧 Email: <a href="mailto:info@bytecity.tech" className="text-light">info@bytecity.tech</a></p>
             <p className="text-light">📞 Phone: <a href="tel:+254777439049" className="text-light">+254 777 439 049</a></p>
+            <p className="text-light">💬 WhatsApp: <a href="https://wa.me/254702439049" className="text-light">+254 702 439 049</a></p>
 
             <div>
               <a href="https://www.facebook.com" className="text-light me-3"><i className="fab fa-facebook fa-2x"></i></a>

@@ -298,3 +298,30 @@ p {
   background-color: #ffcc00;
   border-color: #ffcc00;
 }
+
+
+.text-orange {
+  color: orange;
+}
+
+.bg-orange {
+  background-color: orange;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const NavbarComponent: React.FC = () => {
@@ -36,9 +36,33 @@ const NavbarComponent: React.FC = () => {
             <Nav.Link as={Link} to="/about-us" onClick={closeNavbar}>
               About Us
             </Nav.Link>
-            <Nav.Link as={Link} to="/our-services" onClick={closeNavbar}>
-              Our Services
-            </Nav.Link>
+            <NavDropdown
+              title="Our Services"
+              id="our-services-dropdown"
+              onClick={handleToggle}
+            >
+              <NavDropdown.Item
+                as={Link}
+                to="/web-design"
+                onClick={closeNavbar}
+              >
+                Web Design
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                as={Link}
+                to="/graphic-design"
+                onClick={closeNavbar}
+              >
+                Graphic Design
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                as={Link}
+                to="/social-media-management"
+                onClick={closeNavbar}
+              >
+                Social Media Management
+              </NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link as={Link} to="/training" onClick={closeNavbar}>
               Training
             </Nav.Link>
