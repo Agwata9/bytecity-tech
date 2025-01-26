@@ -1,95 +1,135 @@
-import React from "react";
+import React from 'react';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { FaCheckCircle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import WebDesignHeader from '../components/WebDesignHeader';
 
 const WebDesignPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const services = [
+    {
+      title: 'Basic Websites',
+      features: [
+        '3 to 4 pages',
+        'Mobile-responsive design',
+        'Basic SEO setup',
+        'Contact form integration',
+        'Fast loading speed',
+        'User-friendly navigation',
+        'SSL certificate setup',
+        'Custom domain integration',
+        'Content upload',
+        'Basic analytics tracking',
+      ],
+      price: 'Ksh 15,000 - Ksh 50,000',
+      route: '/basic-websites',
+      badge: null,
+    },
+    {
+      title: 'Informative Websites',
+      features: [
+        '4 to 6 pages',
+        'Custom design',
+        'SEO-friendly structure',
+        'Blog integration',
+        'Newsletter subscription',
+        'Interactive content support',
+        'Multi-language support',
+        'Social media links',
+        'CMS integration',
+        'Website optimization',
+      ],
+      price: 'Ksh 20,000 - Ksh 75,000',
+      route: '/informative-websites',
+      badge: 'Most Common',
+    },
+    {
+      title: 'E-commerce Websites',
+      features: [
+        'Online store with payment gateway',
+        'Product catalog (up to 50 items)',
+        'User registration & order tracking',
+        'Inventory management tools',
+        'Discount and coupon codes',
+        'Shipping options setup',
+        'Customer review system',
+        'Mobile-first design',
+        'Admin dashboard',
+        'Secure checkout process',
+      ],
+      price: 'Ksh 150,000 and above',
+      route: '/ecommerce-websites',
+      badge: null,
+    },
+    {
+      title: 'Corporate Websites',
+      features: [
+        'Custom corporate design',
+        'Multiple integrations (CRM, ERP, etc.)',
+        'Content management system',
+        'Advanced SEO & security features',
+        'Employee portal',
+        'Client feedback forms',
+        'Industry-specific tools',
+        'Interactive media galleries',
+        'Custom reporting tools',
+        'Dedicated support',
+      ],
+      price: 'Contact Our Team',
+      route: '/corporate-websites',
+      badge: null,
+    },
+  ];
+
   return (
-    <div className="container mt-5">
-      {/* Page Header */}
-      <header className="text-center mb-5">
-        <h1 className="display-5 fw-bold text-orange">Web Design & Development</h1>
-        <p className="lead text-muted">
-          Professional web solutions tailored to your business needs.
-        </p>
-      </header>
+    <section className="py-5 bg-light">
+      <Container>
+        <WebDesignHeader />
+        <header className="text-center mb-5">
+          <h1 className="display-5 fw-bold text-warning">Pick Your Perfect Plan</h1>
+          <p className="lead text-muted">
+            Get started in complete confidence. Our 30-day money-back guarantee means it's risk-free.
+          </p>
+        </header>
 
-      {/* Services Section */}
-      <section className="mb-5">
-        <h2 className="text-center text-orange mb-4">Our Services</h2>
-        <div className="row">
-          {/* Service Card 1 */}
-          <div className="col-md-4 mb-4">
-            <div className="card shadow-sm h-100 border-0">
-              <div className="card-body">
-                <h5 className="card-title text-center text-orange">Basic Websites</h5>
-                <p className="card-text text-muted">
-                  Simple, elegant websites ideal for small businesses and startups. Affordable and fast delivery.
-                </p>
-              </div>
-            </div>
-          </div>
-          {/* Service Card 2 */}
-          <div className="col-md-4 mb-4">
-            <div className="card shadow-sm h-100 border-0">
-              <div className="card-body">
-                <h5 className="card-title text-center text-orange">E-commerce Solutions</h5>
-                <p className="card-text text-muted">
-                  Fully functional online stores with secure payment systems and inventory management.
-                </p>
-              </div>
-            </div>
-          </div>
-          {/* Service Card 3 */}
-          <div className="col-md-4 mb-4">
-            <div className="card shadow-sm h-100 border-0">
-              <div className="card-body">
-                <h5 className="card-title text-center text-orange">Custom Websites</h5>
-                <p className="card-text text-muted">
-                  Tailored web solutions for corporate clients. Advanced features and unique branding.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="mb-5">
-        <h2 className="text-center text-orange mb-4">Pricing</h2>
-        <table className="table table-bordered">
-          <thead className="bg-orange text-white">
-            <tr>
-              <th>Service</th>
-              <th>Price Range</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Basic Websites</td>
-              <td>Ksh 25,000 - Ksh 50,000</td>
-            </tr>
-            <tr>
-              <td>Informative Websites</td>
-              <td>Ksh 25,000 - Ksh 75,000</td>
-            </tr>
-            <tr>
-              <td>E-commerce Websites</td>
-              <td>Ksh 100,000 and above</td>
-            </tr>
-            <tr>
-              <td>Corporate Websites</td>
-              <td>Ksh 300,000 and above</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      {/* Contact Section */}
-      <section className="text-center">
-    
-        <p className="text-muted">
-          Ready to start your project? Get in touch with us for a consultation.
-        </p>
-      </section>
-    </div>
+        <Row className="g-4">
+          {services.map((service, index) => (
+            <Col key={index} lg={3} md={6} sm={12}>
+              <Card className="h-100 shadow-sm border-0">
+                {service.badge && (
+                  <div className="bg-success text-white text-center py-2 fw-bold">
+                    {service.badge}
+                  </div>
+                )}
+                <Card.Body className="d-flex flex-column">
+                  <Card.Title className="fw-bold text-warning text-center mb-2">
+                    {service.title}
+                  </Card.Title>
+                  <p className="text-center fw-bold text-info mb-3">{service.price}</p>
+                  <hr className="mx-auto w-75" />
+                  <ul className="list-unstyled">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="d-flex align-items-start mb-2">
+                        <FaCheckCircle color="#ffc107" size={18} className="me-2" />
+                        <span className="text-secondary">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    variant="warning"
+                    className="w-100 fw-bold text-uppercase mt-auto"
+                    onClick={() => navigate(service.route)}
+                  >
+                    Choose this Plan
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </section>
   );
 };
 
