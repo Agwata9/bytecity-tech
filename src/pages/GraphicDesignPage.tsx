@@ -10,7 +10,7 @@ const GraphicDesignPage: React.FC = () => {
     {
       title: 'Logo Design',
       description: 'Custom, unique logos designed to represent your brand.',
-      price: 'Ksh 10,000 - Ksh 30,000',
+      price: 'Ksh 10,000 - Ksh 60,000',
       imageUrl: '/images/logo-design.jpg',
       route: '/logo-design',
     },
@@ -31,35 +31,35 @@ const GraphicDesignPage: React.FC = () => {
     {
       title: 'Posters, Flyers, & Brochures',
       description: 'Effective designs for your promotional materials.',
-      price: 'Ksh 5,000 - Ksh 15,000',
+      price: 'Ksh 5,000 - Ksh 30,000',
       imageUrl: '/images/posters-flyers-brochures.jpg',
       route: '/posters-flyers-brochures',
     },
     {
       title: 'Receipt & Packaging Design',
       description: 'Custom designs for receipts and packaging to enhance your product presentation.',
-      price: 'Ksh 4,000 - Ksh 12,000',
+      price: 'Ksh 5,000 - Ksh 15,000',
       imageUrl: '/images/receipt-packaging-design.jpg',
       route: '/receipt-packaging-design',
     },
     {
       title: 'Digital Print & Social Media Graphics',
       description: 'Social media graphics and digital print materials for online engagement.',
-      price: 'Ksh 1,500 - Ksh 7,000',
+      price: 'Ksh 1,500 - Ksh 15,000',
       imageUrl: '/images/social-media-graphics.jpg',
       route: '/digital-print-social-media-graphics',
     },
     {
       title: 'Print Media Design (Magazines, Ads, Banners)',
       description: 'Design for print media like magazines, ads, and banners.',
-      price: 'Ksh 6,000 - Ksh 20,000',
+      price: 'Ksh 5,000 - Ksh 20,000',
       imageUrl: '/images/print-media-design.jpg',
       route: '/print-media-design',
     },
     {
       title: 'Presentation & PowerPoint Design',
       description: 'Custom, visually engaging presentations and PowerPoint designs.',
-      price: 'Ksh 5,000 - Ksh 15,000',
+      price: 'Ksh 1,500 - Ksh 10,000',
       imageUrl: '/images/presentation-powerpoint-design.jpg',
       route: '/presentation-powerpoint-design',
     },
@@ -73,23 +73,50 @@ const GraphicDesignPage: React.FC = () => {
     {
       title: 'Illustrations & Custom Artwork',
       description: 'Creative and unique illustrations tailored to your needs.',
-      price: 'Ksh 8,000 - Ksh 25,000',
+      price: 'Ksh ,000 - Ksh 25,000',
       imageUrl: '/images/illustrations-artwork.jpg',
       route: '/illustrations-artwork',
     },
     {
       title: 'Advertising Campaigns (Online and Print)',
       description: 'Complete advertising campaigns for both online and print media.',
-      price: 'Ksh 10,000 - Ksh 50,000',
+      price: 'Ksh 8,000 - Ksh 50,000',
       imageUrl: '/images/advertising-campaigns.jpg',
       route: '/advertising-campaigns',
+    },
+    {
+      title: 'Stationary Packages',
+      description: 'Complete design packages for stationery that reflect your brand identity.',
+      price: 'Ksh 4,000 - Ksh 20,000',
+      imageUrl: '/images/stationary-packages.jpg',
+      route: '/stationary-packages',
+    },
+    {
+      title: 'T-shirts and Merchandise',
+      description: 'Custom designs for T-shirts and other merchandise for promotions or branding.',
+      price: 'Ksh 3,000 - Ksh 10,000',
+      imageUrl: '/images/t-shirts-merchandise.jpg',
+      route: '/t-shirts-merchandise',
+    },
+    {
+      title: 'Signages',
+      description: 'Designs for business or event signage to attract attention and convey key messages.',
+      price: 'Ksh 8,000 - Ksh 25,000',
+      imageUrl: '/images/signages.jpg',
+      route: '/signages',
+    },
+    {
+      title: 'Large Format Printing',
+      description: 'High-quality large format printing for banners, posters, and more.',
+      price: 'Ksh 10,000 - Ksh 50,000',
+      imageUrl: '/images/large-format-printing.jpg',
+      route: '/large-format-printing',
     },
   ];
 
   return (
     <section className="py-5 bg-light">
       <Container>
-    
         {/* Header Section */}
         <header className="text-center mb-5">
           <h1 className="display-6 fw-bold text-warning">Our Graphic Design Services</h1>
@@ -141,7 +168,6 @@ const GraphicDesignPage: React.FC = () => {
             </Col>
           </Row>
         </section>
-
       </Container>
     </section>
   );
