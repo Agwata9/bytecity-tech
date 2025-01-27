@@ -92,7 +92,7 @@ const GraphicDesignPage: React.FC = () => {
     
         {/* Header Section */}
         <header className="text-center mb-5">
-          <h1 className="display-5 fw-bold text-warning">Our Graphic Design Services</h1>
+          <h1 className="display-6 fw-bold text-warning">Our Graphic Design Services</h1>
           <p className="lead text-muted">
             Professional design services for businesses looking to elevate their brand and marketing materials. From logos to advertising campaigns, we've got you covered.
           </p>

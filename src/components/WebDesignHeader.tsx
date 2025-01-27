@@ -6,14 +6,13 @@ import {
   CardContent,
   CardMedia,
   Button,
-  useMediaQuery,
+  Grid,
   useTheme,
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const WebDesignHeader: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
@@ -43,89 +42,121 @@ const WebDesignHeader: React.FC = () => {
       </Typography>
 
       {/* Cards Container */}
-      <Box
+      <Grid
+        container
+        spacing={4}
         sx={{
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
-          gap: 4,
           width: "100%",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         {/* Features Card */}
-        <Card
-          variant="outlined"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            p: 3,
-          }}
-        >
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              Features We Offer:
-            </Typography>
-            <ul style={{ paddingLeft: "20px", listStyle: "none", margin: 0 }}>
-              {[
-                "Responsive web design",
-                "Domain registration",
-                "24/7 Support",
-                "Run on WordPress, Strapi, or any CMS",
-              ].map((feature, index) => (
-                <li
-                  key={index}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "12px",
-                  }}
-                >
-                  <CheckCircleIcon
-                    sx={{
-                      fontSize: 22,
-                      color: theme.palette.success.main,
-                      mr: 1,
+        <Grid item xs={12} sm={6}>
+          <Card
+            variant="outlined"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              p: 3,
+              height: "100%",
+              borderRadius: 2,
+              boxShadow: 2,
+            }}
+          >
+            <CardContent>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
+                Features We Offer:
+              </Typography>
+              <ul style={{ paddingLeft: "20px", listStyle: "none", margin: 0 }}>
+                {[
+                  "Responsive web design",
+                  "Domain registration",
+                  "24/7 Support",
+                  "Run on WordPress, Strapi, or any CMS",
+                  "Web Management/Admnistration",
+                  "Domain registration",
+                  "E-mail Management/Admnistration",
+                ].map((feature, index) => (
+                  <li
+                    key={index}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "16px",
                     }}
-                  />
-                  <Typography variant="body1">{feature}</Typography>
-                </li>
-              ))}
-            </ul>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ mt: 3 }}
-              onClick={() => alert("Redirecting to contact page...")}
-            >
-              Talk to Us
-            </Button>
-          </CardContent>
-        </Card>
+                  >
+                    <CheckCircleIcon
+                      sx={{
+                        fontSize: 24,
+                        color: "#FFA500", // Orange color for the checkmark
+                        mr: 1,
+                      }}
+                    />
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: theme.palette.text.primary,
+                        fontWeight: "500",
+                        fontSize: "1rem",
+                      }}
+                    >
+                      {feature}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+              {/* Button Styled to Match WebDesignPage */}
+              <Button
+                variant="contained"
+                color="success"
+                sx={{
+                  mt: 3,
+                  textTransform: "uppercase",
+                  fontWeight: "bold",
+                  padding: "12px 24px",
+                  width: "100%",
+                  "&:hover": {
+                    backgroundColor: "orange", // Orange hover color
+                  },
+                }}
+                onClick={() => alert("Redirecting to contact page...")}
+              >
+                Talk to Us
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
 
         {/* Image Card */}
-        <Card
-          variant="outlined"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-            p: 2,
-          }}
-        >
-          <CardMedia
-            component="img"
-            image="https://via.placeholder.com/400"
-            alt="Web Design"
+        <Grid item xs={12} sm={6}>
+          <Card
+            variant="outlined"
             sx={{
-              width: "100%",
-              height: "auto",
-              maxWidth: 450,
-              mx: "auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              p: 2,
+              borderRadius: 2,
+              boxShadow: 2,
             }}
-          />
-        </Card>
-      </Box>
+          >
+            <CardMedia
+              component="img"
+              image="../webdeisgn-1.png"
+              alt="Web Design"
+              sx={{
+                width: "100%",
+                height: "auto",
+                maxWidth: 450,
+                mx: "auto",
+              }}
+            />
+          </Card>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

@@ -325,3 +325,10 @@ p {
   text-align: center;
   vertical-align: middle;
 }
+
+.navbar-nav .nav-link:hover {
+  color: #ffa500; /* orange hover effect */
+}
+.navbar-nav .nav-dropdown-item:hover {
+  background-color: #343a40; /* darker background on hover */
+}

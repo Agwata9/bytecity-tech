@@ -6,7 +6,6 @@ const NavbarComponent: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
 
   const handleToggle = () => setExpanded(!expanded);
-
   const closeNavbar = () => setExpanded(false);
 
   return (
@@ -30,21 +29,38 @@ const NavbarComponent: React.FC = () => {
         <Navbar.Toggle aria-controls="navbar-nav" onClick={handleToggle} />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/" onClick={closeNavbar}>
+            {/* Navbar Links */}
+            <Nav.Link
+              as={Link}
+              to="/"
+              onClick={closeNavbar}
+              style={{ fontWeight: "bold" }}
+            >
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/about-us" onClick={closeNavbar}>
+            <Nav.Link
+              as={Link}
+              to="/about-us"
+              onClick={closeNavbar}
+              style={{ fontWeight: "bold" }}
+            >
               About Us
             </Nav.Link>
+
+            {/* Dropdown for Services */}
             <NavDropdown
               title="Our Services"
               id="our-services-dropdown"
               onClick={handleToggle}
+              drop="down"
+              show={expanded} // Controls dropdown visibility on mobile
+              style={{ fontWeight: "bold" }}
             >
               <NavDropdown.Item
                 as={Link}
                 to="/web-design"
                 onClick={closeNavbar}
+                style={{ fontWeight: "bold" }}
               >
                 Web Design
               </NavDropdown.Item>
@@ -52,6 +68,7 @@ const NavbarComponent: React.FC = () => {
                 as={Link}
                 to="/graphic-design"
                 onClick={closeNavbar}
+                style={{ fontWeight: "bold" }}
               >
                 Graphic Design
               </NavDropdown.Item>
@@ -59,20 +76,43 @@ const NavbarComponent: React.FC = () => {
                 as={Link}
                 to="/social-media-management"
                 onClick={closeNavbar}
+                style={{ fontWeight: "bold" }}
               >
                 Social Media Management
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={Link} to="/training" onClick={closeNavbar}>
+
+            {/* Other Links */}
+            <Nav.Link
+              as={Link}
+              to="/training"
+              onClick={closeNavbar}
+              style={{ fontWeight: "bold" }}
+            >
               Training
             </Nav.Link>
-            <Nav.Link as={Link} to="/store" onClick={closeNavbar}>
+            <Nav.Link
+              as={Link}
+              to="/store"
+              onClick={closeNavbar}
+              style={{ fontWeight: "bold" }}
+            >
               Computer Store
             </Nav.Link>
-            <Nav.Link as={Link} to="/careers" onClick={closeNavbar}>
+            <Nav.Link
+              as={Link}
+              to="/careers"
+              onClick={closeNavbar}
+              style={{ fontWeight: "bold" }}
+            >
               Careers
             </Nav.Link>
-            <Nav.Link as={Link} to="/contact-us" onClick={closeNavbar}>
+            <Nav.Link
+              as={Link}
+              to="/contact-us"
+              onClick={closeNavbar}
+              style={{ fontWeight: "bold" }}
+            >
               Contact Us
             </Nav.Link>
           </Nav>
