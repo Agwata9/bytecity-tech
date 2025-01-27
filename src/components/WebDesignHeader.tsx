@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   Typography,
@@ -8,19 +8,19 @@ import {
   Button,
   useMediaQuery,
   useTheme,
-} from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+} from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const WebDesignHeader: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         py: 6,
         px: 3,
         backgroundColor: theme.palette.background.default,
@@ -31,31 +31,33 @@ const WebDesignHeader: React.FC = () => {
         variant="h4"
         gutterBottom
         sx={{
-          textAlign: 'center',
-          fontWeight: 'bold',
+          textAlign: "center",
+          fontWeight: "bold",
           color: theme.palette.text.primary,
           mb: 4,
         }}
       >
-        Everything You Need for an Online Presence
+        <h1 className="display-6 fw-bold text-warning">
+          Everything You Need for an Online Presence
+        </h1>
       </Typography>
 
       {/* Cards Container */}
       <Box
         sx={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
           gap: 4,
-          width: '100%',
+          width: "100%",
         }}
       >
         {/* Features Card */}
         <Card
           variant="outlined"
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
             p: 3,
           }}
         >
@@ -63,16 +65,20 @@ const WebDesignHeader: React.FC = () => {
             <Typography variant="h6" gutterBottom>
               Features We Offer:
             </Typography>
-            <ul style={{ paddingLeft: '20px', listStyle: 'none', margin: 0 }}>
+            <ul style={{ paddingLeft: "20px", listStyle: "none", margin: 0 }}>
               {[
-                'Responsive web design',
-                'Domain registration',
-                '24/7 Support',
-                'Run on WordPress, Strapi, or any CMS',
+                "Responsive web design",
+                "Domain registration",
+                "24/7 Support",
+                "Run on WordPress, Strapi, or any CMS",
               ].map((feature, index) => (
                 <li
                   key={index}
-                  style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "12px",
+                  }}
                 >
                   <CheckCircleIcon
                     sx={{
@@ -89,7 +95,7 @@ const WebDesignHeader: React.FC = () => {
               variant="contained"
               color="primary"
               sx={{ mt: 3 }}
-              onClick={() => alert('Redirecting to contact page...')}
+              onClick={() => alert("Redirecting to contact page...")}
             >
               Talk to Us
             </Button>
@@ -100,10 +106,10 @@ const WebDesignHeader: React.FC = () => {
         <Card
           variant="outlined"
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
             p: 2,
           }}
         >
@@ -112,10 +118,10 @@ const WebDesignHeader: React.FC = () => {
             image="https://via.placeholder.com/400"
             alt="Web Design"
             sx={{
-              width: '100%',
-              height: 'auto',
+              width: "100%",
+              height: "auto",
               maxWidth: 450,
-              mx: 'auto',
+              mx: "auto",
             }}
           />
         </Card>
