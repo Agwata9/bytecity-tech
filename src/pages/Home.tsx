@@ -5,7 +5,7 @@ import Services from "../components/Services";
 import Message from "../components/Message";
 import WhyUs from "../components/WhyUs";
 import HireUsModal from "../components/HireUsModal";
-import PortfolioGallery from "../components/PortfolioGallery";
+import OurClients from "../components/OurClients";
 import TrainingHero from "../components/TrainingHero";
 import CustomAccordion from "../components/CustomAccordion";
 
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
         handleClose={handleCloseModal}
         handleDataSubmit={handleDataSubmit} // Pass handleDataSubmit prop
       />
-      <PortfolioGallery />
+      <OurClients />
     </div>
   );
 };

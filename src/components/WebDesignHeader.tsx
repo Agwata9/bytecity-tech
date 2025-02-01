@@ -1,15 +1,6 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Button,
-  Grid,
-  useTheme,
-} from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { Box, Typography, Container } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const WebDesignHeader: React.FC = () => {
   const theme = useTheme();
@@ -20,143 +11,36 @@ const WebDesignHeader: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        py: 6,
-        px: 3,
-        backgroundColor: theme.palette.background.default,
+        py: { xs: 4, sm: 6 },
+        background: "linear-gradient(135deg, #4A90E2, #8E44AD)",
+        color: "#FFFFFF",
+        width: "100%",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      {/* Header Title */}
-      <Typography
-        variant="h4"
-        gutterBottom
+      <Box
         sx={{
-          textAlign: "center",
-          fontWeight: "bold",
-          color: theme.palette.text.primary,
-          mb: 4,
-        }}
-      >
-        <h1 className="display-6 fw-bold text-warning">
-          Everything You Need for an Online Presence
-        </h1>
-      </Typography>
-
-      {/* Cards Container */}
-      <Grid
-        container
-        spacing={4}
-        sx={{
+          backgroundImage: "url('your-background-image.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           width: "100%",
-          display: "flex",
-          justifyContent: "center",
+          height: { xs: "200px", sm: "300px", md: "400px" },
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          opacity: 0.3,
         }}
-      >
-        {/* Features Card */}
-        <Grid item xs={12} sm={6}>
-          <Card
-            variant="outlined"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              p: 3,
-              height: "100%",
-              borderRadius: 2,
-              boxShadow: 2,
-            }}
-          >
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Features We Offer:
-              </Typography>
-              <ul style={{ paddingLeft: "20px", listStyle: "none", margin: 0 }}>
-                {[
-                  "Responsive web design",
-                  "Domain registration",
-                  "24/7 Support",
-                  "Run on WordPress, Strapi, or any CMS",
-                  "Web Management/Admnistration",
-                  "Domain registration",
-                  "E-mail Management/Admnistration",
-                ].map((feature, index) => (
-                  <li
-                    key={index}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    <CheckCircleIcon
-                      sx={{
-                        fontSize: 24,
-                        color: "#FFA500", // Orange color for the checkmark
-                        mr: 1,
-                      }}
-                    />
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: theme.palette.text.primary,
-                        fontWeight: "500",
-                        fontSize: "1rem",
-                      }}
-                    >
-                      {feature}
-                    </Typography>
-                  </li>
-                ))}
-              </ul>
-              {/* Button Styled to Match WebDesignPage */}
-              <Button
-                variant="contained"
-                color="success"
-                sx={{
-                  mt: 3,
-                  textTransform: "uppercase",
-                  fontWeight: "bold",
-                  padding: "12px 24px",
-                  width: "100%",
-                  "&:hover": {
-                    backgroundColor: "orange", // Orange hover color
-                  },
-                }}
-                onClick={() => alert("Redirecting to contact page...")}
-              >
-                Talk to Us
-              </Button>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Image Card */}
-        <Grid item xs={12} sm={6}>
-          <Card
-            variant="outlined"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              overflow: "hidden",
-              p: 2,
-              borderRadius: 2,
-              boxShadow: 2,
-            }}
-          >
-            <CardMedia
-              component="img"
-              image="../webdeisgn-1.png"
-              alt="Web Design"
-              sx={{
-                width: "100%",
-                height: "auto",
-                maxWidth: 450,
-                mx: "auto",
-              }}
-            />
-          </Card>
-        </Grid>
-      </Grid>
+      />
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, textAlign: "center" }}>
+        <Typography variant="h3" sx={{ fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }, fontWeight: "bold", mb: 2 }}>
+          Professional Web Design Services
+        </Typography>
+        <Typography variant="h6" sx={{ fontSize: { xs: "1rem", sm: "1.2rem" }, maxWidth: "600px", mx: "auto" }}>
+          Creating visually stunning, responsive, and user-friendly websites tailored to your needs.
+        </Typography>
+      </Container>
     </Box>
   );
 };

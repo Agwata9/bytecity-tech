@@ -8,9 +8,19 @@ interface DiscoverProps {
 
 const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
   const images = [
-    { src: 'image1.png', alt: 'Design 1' }, // Replace with your image paths
-    { src: 'image2.png', alt: 'Design 2' },
-    { src: 'image3.png', alt: 'Design 3' },
+    { src: './carousel/image1.jpg', alt: 'Design 1' }, // Replace with your image paths
+  { src: './carousel/image2.jpg', alt: 'Design 2' },
+  { src: './carousel/image3.jpg', alt: 'Design 3' },
+  { src: './carousel/image4.jpg', alt: 'Design 4' },
+  { src: './carousel/image5.jpg', alt: 'Design 5' },
+  { src: './carousel/image6.jpg', alt: 'Design 6' },
+  { src: './carousel/image7.jpg', alt: 'Design 7' },
+  { src: './carousel/image8.jpg', alt: 'Design 8' },
+  { src: './carousel/image9.jpg', alt: 'Design 9' },
+  { src: './carousel/image10.jpg', alt: 'Design 10' },
+  { src: './carousel/image11.jpg', alt: 'Design 11' },
+  { src: './carousel/image12.jpg', alt: 'Design 12' }
+  
   ];
 
   return (
