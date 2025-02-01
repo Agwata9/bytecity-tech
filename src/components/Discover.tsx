@@ -55,7 +55,7 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
               (e.currentTarget.style.backgroundColor = "orange")
             }
           >
-            Discover Our Services
+            Hire Us
           </Button>
         </Col>
       </Row>
