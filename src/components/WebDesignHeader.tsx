@@ -3,7 +3,6 @@ import { Box, Typography, Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 const WebDesignHeader: React.FC = () => {
-  const theme = useTheme();
 
   return (
     <Box
