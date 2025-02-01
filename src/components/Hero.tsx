@@ -19,7 +19,7 @@ const Hero: React.FC<HeroProps> = () => {
 
   return (
     <section
-      className="hero bg-dark text-white d-flex align-items-center position-relative"
+      className="hero bg-dark text-white d-flex align-items-center justify-content-center position-relative"
       style={{
         backgroundImage: "url(/hero-image-05.png)",
         backgroundSize: "cover",
@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = () => {
           backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay for better text contrast
         }}
       />
-      <Container className="text-center text-lg-start position-relative z-index-1">
+      <Container className="text-center position-relative z-index-1">
         {/* Hero Content */}
         <div className="hero-content">
           <h1 className="display-4 fw-bold mb-3"> {/* Increased bottom margin */}
