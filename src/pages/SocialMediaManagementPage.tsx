@@ -6,11 +6,13 @@ import {
   faTiktok,
   faInstagram,
   faFacebook,
+  faTwitter,
   faTelegram,
   faLinkedin,
   faSlack,
-  faDiscord
+  faDiscord,
 } from '@fortawesome/free-brands-svg-icons';
+import { faChartBar, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const SocialMediaManagementPage: React.FC = () => {
@@ -40,6 +42,7 @@ const SocialMediaManagementPage: React.FC = () => {
             <Card className="shadow border-0 rounded">
               <Card.Body>
                 <h3 className="fw-bold text-secondary mb-3">
+                  <FontAwesomeIcon icon={faTiktok} className="me-2" />
                   TikTok Management & Growth
                 </h3>
                 <p className="text-muted">
@@ -55,6 +58,7 @@ const SocialMediaManagementPage: React.FC = () => {
             <Card className="shadow border-0 rounded">
               <Card.Body>
                 <h3 className="fw-bold text-secondary mb-3">
+                  <FontAwesomeIcon icon={faInstagram} className="me-2" />
                   Instagram Management & Branding
                 </h3>
                 <p className="text-muted">
@@ -72,6 +76,7 @@ const SocialMediaManagementPage: React.FC = () => {
             <Card className="shadow border-0 rounded">
               <Card.Body>
                 <h3 className="fw-bold text-secondary mb-3">
+                  <FontAwesomeIcon icon={faFacebook} className="me-2" />
                   Facebook Page Management
                 </h3>
                 <p className="text-muted">
@@ -87,7 +92,8 @@ const SocialMediaManagementPage: React.FC = () => {
             <Card className="shadow border-0 rounded">
               <Card.Body>
                 <h3 className="fw-bold text-secondary mb-3">
-                  X (Twitter) Strategy & Engagement
+                  <FontAwesomeIcon icon={faTwitter} className="me-2" />
+                  X Strategy & Engagement
                 </h3>
                 <p className="text-muted">
                   Maximize your presence on X with effective tweeting strategies, regular posts, and engagement with trending topics. 
@@ -104,6 +110,7 @@ const SocialMediaManagementPage: React.FC = () => {
             <Card className="shadow border-0 rounded">
               <Card.Body>
                 <h3 className="fw-bold text-secondary mb-3">
+                  <FontAwesomeIcon icon={faBullhorn} className="me-2" />
                   Social Media Advertising
                 </h3>
                 <p className="text-muted">
@@ -119,6 +126,7 @@ const SocialMediaManagementPage: React.FC = () => {
             <Card className="shadow border-0 rounded">
               <Card.Body>
                 <h3 className="fw-bold text-secondary mb-3">
+                  <FontAwesomeIcon icon={faChartBar} className="me-2" />
                   Social Media Analytics & Reports
                 </h3>
                 <p className="text-muted">

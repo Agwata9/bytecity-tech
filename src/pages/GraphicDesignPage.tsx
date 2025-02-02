@@ -1,12 +1,49 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+
+// Define the type for each service
+interface Service {
+  title: string;
+  description: string;
+  price: string;
+  imageUrl: string;
+  route: string;
+}
+
+// Service Card Component
+const ServiceCard: React.FC<{ service: Service; navigate: (route: string) => void }> = ({ service, navigate }) => (
+  <Col lg={4} md={6} sm={12}>
+    <Card className="h-100 shadow-sm border-0">
+      <Card.Img
+        variant="top"
+        src={service.imageUrl || '/default-image.jpg'}
+        alt={`Image showing ${service.title}`}
+        loading="lazy"
+      />
+      <Card.Body className="d-flex flex-column">
+        <Card.Title className="fw-bold text-warning text-center mb-3">
+          {service.title}
+        </Card.Title>
+        <p className="text-center text-muted mb-3">{service.description}</p>
+        <p className="text-center fw-bold text-info mb-3">{service.price}</p>
+        <button
+          className="btn btn-warning w-100 fw-bold text-uppercase mt-auto"
+          onClick={() => navigate(service.route)}
+          aria-label={`Go to ${service.title} page`}
+        >
+          Get Started
+        </button>
+      </Card.Body>
+    </Card>
+  </Col>
+);
 
 const GraphicDesignPage: React.FC = () => {
   const navigate = useNavigate();
 
   // Service data with prices and image URLs
-  const services = [
+  const services: Service[] = [
     {
       title: 'Logo Design',
       description: 'Custom, unique logos designed to represent your brand.',
@@ -73,7 +110,7 @@ const GraphicDesignPage: React.FC = () => {
     {
       title: 'Illustrations & Custom Artwork',
       description: 'Creative and unique illustrations tailored to your needs.',
-      price: 'Ksh ,000 - Ksh 25,000',
+      price: 'Ksh 5,000 - Ksh 25,000',
       imageUrl: '/images/illustrations-artwork.jpg',
       route: '/illustrations-artwork',
     },
@@ -116,58 +153,44 @@ const GraphicDesignPage: React.FC = () => {
 
   return (
     <section className="py-5 bg-light">
+      {/* Hero Section */}
+      <section
+        className="hero-section text-center text-white"
+        style={{
+          backgroundImage: 'url(/images/hero-bg.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '400px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        }}
+      >
+        <Container>
+          <h1 className="display-4 fw-bold text-warning mb-3">Elevate Your Brand with Stunning Design</h1>
+          <hr style={{ width: '70px', margin: '0 auto', borderTop: '2px solid orange' }} />
+          <p className="lead text-muted">
+            Custom graphic design services to bring your ideas to life. From logos to full branding, we have you covered.
+          </p>
+        </Container>
+      </section>
+
+      {/* Services Listing */}
       <Container>
-        {/* Header Section */}
-        <header className="text-center mb-5">
-          <h1 className="display-6 fw-bold text-warning">Our Graphic Design Services</h1>
+        <header className="text-center mb-5 mt-4">
+          <h1 className="fw-bold text-warning mb-3">Our Graphic Design Services</h1>
+          <hr style={{ width: '70px', margin: '0 auto', borderTop: '2px solid orange' }} />
           <p className="lead text-muted">
             Professional design services for businesses looking to elevate their brand and marketing materials. From logos to advertising campaigns, we've got you covered.
           </p>
         </header>
 
-        {/* Services Listing */}
         <Row className="g-4">
           {services.map((service, index) => (
-            <Col key={index} lg={4} md={6} sm={12}>
-              <Card className="h-100 shadow-sm border-0">
-                <Card.Img variant="top" src={service.imageUrl} alt={service.title} />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title className="fw-bold text-warning text-center mb-3">
-                    {service.title}
-                  </Card.Title>
-                  <p className="text-center text-muted mb-3">{service.description}</p>
-                  <p className="text-center fw-bold text-info mb-3">{service.price}</p>
-                  <Button
-                    variant="warning"
-                    className="w-100 fw-bold text-uppercase mt-auto"
-                    onClick={() => navigate(service.route)}
-                  >
-                    Get Started
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
+            <ServiceCard key={index} service={service} navigate={navigate} />
           ))}
         </Row>
-
-        {/* Portfolio Section */}
-        <section className="mt-5">
-          <h2 className="text-center mb-4">Our Recent Work</h2>
-          <Row className="g-4">
-            <Col lg={4} md={6} sm={12}>
-              <img src="/images/logo-portfolio1.jpg" alt="Logo Design Example" className="img-fluid rounded" />
-              <p className="text-center mt-2">Logo Design for XYZ</p>
-            </Col>
-            <Col lg={4} md={6} sm={12}>
-              <img src="/images/brochure-portfolio1.jpg" alt="Brochure Design Example" className="img-fluid rounded" />
-              <p className="text-center mt-2">Brochure Design for ABC</p>
-            </Col>
-            <Col lg={4} md={6} sm={12}>
-              <img src="/images/banner-portfolio1.jpg" alt="Banner Design Example" className="img-fluid rounded" />
-              <p className="text-center mt-2">Roll-up Banner for DEF</p>
-            </Col>
-          </Row>
-        </section>
       </Container>
     </section>
   );
