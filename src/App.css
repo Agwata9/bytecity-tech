@@ -332,3 +332,52 @@ p {
 .navbar-nav .nav-dropdown-item:hover {
   background-color: #343a40; /* darker background on hover */
 }
+
+
+/* Custom Carousel Size */
+.custom-carousel img {
+  max-height: 350px; /* Adjusted carousel image height */
+  object-fit: cover;
+}
+
+/* Scrolling Text Container */
+.offer-scroll-container {
+  height: 200px; /* Adjust the height of the scrolling area */
+  overflow: hidden;
+  position: relative;
+}
+
+.offer-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  animation: scroll-up 10s linear infinite;
+}
+
+.offer-list li {
+  font-size: 1.1rem;
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+/* Keyframe for Scrolling Text Effect */
+@keyframes scroll-up {
+  from {
+    transform: translateY(100%); /* Start from below the container */
+  }
+  to {
+    transform: translateY(-100%); /* Scroll to the top */
+  }
+}
+
+/* Blinking Emoji */
+.blinking {
+  animation: blink 1s step-start infinite;
+}
+
+/* Keyframe for Blinking Emoji */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

@@ -1,13 +1,45 @@
 import React from "react";
 import AboutUsHeader from "../components/AboutUsHeader";
 
+// Team Member Card Component
+const TeamMemberCard: React.FC<{ member: { image: string, name: string, profession: string, bio: string } }> = ({ member }) => (
+  <div className="col" key={member.name}>
+    <div className="card h-100 shadow-sm text-center">
+      <img
+        src={member.image}
+        alt={`Image of ${member.name}`}
+        className="card-img-top rounded-circle mx-auto mt-3"
+        style={{
+          width: "120px",
+          height: "120px",
+          objectFit: "cover",
+        }}
+      />
+      <div className="card-body">
+        <h5 className="card-title mt-3 text-warning">{member.name}</h5>
+        <p className="text-muted fst-italic">{member.profession}</p>
+        <p
+          className="card-text"
+          style={{
+            maxHeight: "100px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {member.bio}
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
 const AboutUs: React.FC = () => {
   const teamMembers = [
     {
-      image: "/aboutUs/agwata-image.jpg", // Ensure image path is correct
+      image: "/aboutUs/agwata-image.jpg",
       name: "Agwata",
       profession: "Co-Founder and Tech Strategist",
-      bio: 'Agwata is a skilled professional in web design, social media management, virtual assistance, and Python programming. Certified in AWS, Ethical Hacking, and Software Engineering, Agwata excels in online campaigns, brand visibility, and ICT consultancy, offering a well-rounded approach to tech and digital marketing.',
+      bio: 'Agwata is a skilled professional in web design, social media management, virtual assistance, Graphics & Design, and Python programming. Certified in AWS, Ethical Hacking, and Software Engineering, Agwata excels in online campaigns, brand visibility, and ICT consultancy, offering a well-rounded approach to tech and digital marketing.',
     },
     {
       image: "/aboutUs/dee-image1.jpg",
@@ -55,27 +87,7 @@ const AboutUs: React.FC = () => {
 
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {teamMembers.map((member) => (
-            <div className="col" key={member.name}>
-              <div className="card h-100 shadow-sm text-center">
-                <img
-                  src={member.image}
-                  alt={`Image of ${member.name}`}
-                  className="card-img-top rounded-circle mx-auto mt-3"
-                  style={{
-                    width: "120px",
-                    height: "120px",
-                    objectFit: "cover",
-                  }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title mt-3 text-warning">{member.name}</h5>
-                  <p className="text-muted fst-italic">{member.profession}</p>
-                  <p className="card-text" style={{ maxHeight: '100px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {member.bio}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <TeamMemberCard member={member} key={member.name} />
           ))}
         </div>
       </div>
