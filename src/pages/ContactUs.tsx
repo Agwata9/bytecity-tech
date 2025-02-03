@@ -28,12 +28,13 @@ const ContactUs: React.FC = () => {
       <ContactUsHeader />
       <div className="container py-5">
         <div className="row">
+          {/* Contact Form Section */}
           <div className="col-lg-6 mb-4">
             <h5 className="text-warning mb-4 display-6">Contact Us</h5>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label fs-5">
-                  Your Name
+                  Your Full Name
                 </label>
                 <input
                   type="text"
@@ -41,13 +42,13 @@ const ContactUs: React.FC = () => {
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Enter your name"
+                  placeholder="Enter your full name"
                   required
                 />
               </div>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label fs-5">
-                  Your Email
+                  Your Email Address
                 </label>
                 <input
                   type="email"
@@ -55,7 +56,7 @@ const ContactUs: React.FC = () => {
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Enter your email"
+                  placeholder="Enter your email address"
                   required
                 />
               </div>
@@ -69,11 +70,14 @@ const ContactUs: React.FC = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Write your message"
+                  placeholder="Write your message here"
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-warning w-100 py-3 fs-5">
+              <button
+                type="submit"
+                className="btn btn-warning w-100 py-3 fs-5 hover-effect"
+              >
                 Send Message
               </button>
             </form>
@@ -94,30 +98,45 @@ const ContactUs: React.FC = () => {
 
             {/* Social Media Links */}
             <div className="d-flex justify-content-start">
-              <a href="#" className="text-dark me-3 fs-5">
+              <a
+                href="#"
+                className="text-dark me-3 fs-5 hover-effect"
+                title="Facebook"
+              >
                 <i
                   className="bi bi-facebook"
-                  style={{ fontSize: "1.5rem" }}
+                  style={{ fontSize: "1.8rem" }}
                 ></i>
-                <span className="ms-2">Facebook</span>
               </a>
-              <a href="#" className="text-dark me-3 fs-5">
-                <i className="bi bi-twitter" style={{ fontSize: "1.5rem" }}></i>
-                <span className="ms-2">Twitter</span>
+              <a
+                href="#"
+                className="text-dark me-3 fs-5 hover-effect"
+                title="Twitter"
+              >
+                <i
+                  className="bi bi-twitter"
+                  style={{ fontSize: "1.8rem" }}
+                ></i>
               </a>
-              <a href="#" className="text-dark me-3 fs-5">
+              <a
+                href="#"
+                className="text-dark me-3 fs-5 hover-effect"
+                title="LinkedIn"
+              >
                 <i
                   className="bi bi-linkedin"
-                  style={{ fontSize: "1.5rem" }}
+                  style={{ fontSize: "1.8rem" }}
                 ></i>
-                <span className="ms-2">LinkedIn</span>
               </a>
-              <a href="#" className="text-dark fs-5">
+              <a
+                href="#"
+                className="text-dark fs-5 hover-effect"
+                title="WhatsApp"
+              >
                 <i
                   className="bi bi-whatsapp"
-                  style={{ fontSize: "1.5rem" }}
+                  style={{ fontSize: "1.8rem" }}
                 ></i>
-                <span className="ms-2">WhatsApp</span>
               </a>
             </div>
           </div>
