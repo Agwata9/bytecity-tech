@@ -1,12 +1,55 @@
-import { Container, Button, Row, Col, Carousel } from "react-bootstrap";
-import React from "react";
+import React from 'react';
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  useTheme,
+  useMediaQuery
+} from '@mui/material';
+import Carousel from 'react-material-ui-carousel';
+import { EmojiEvents, LocalOffer, Star, Bolt } from '@mui/icons-material';
+import { styled, keyframes } from '@mui/system';
 
 // Define the props for the Discover component
 interface DiscoverProps {
-  onHireUsClick: () => void; // This will handle the modal opening
+  onHireUsClick: () => void;
 }
 
+const scrollUp = keyframes`
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+`;
+
+const OfferItem = styled('li')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  marginBottom: theme.spacing(2),
+  fontSize: '1.1rem',
+  '& strong': {
+    fontWeight: 600,
+    color: theme.palette.secondary.main
+  }
+}));
+
+const OfferList = styled('ul')({
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+  animation: `${scrollUp} 15s linear infinite`,
+  '&:hover': {
+    animationPlayState: 'paused'
+  }
+});
+
 const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const images = [
     { src: "./carousel/image1.jpg", alt: "Design 1" },
     { src: "./carousel/image2.jpg", alt: "Design 2" },
@@ -19,70 +62,178 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
     { src: "./carousel/image9.jpg", alt: "Design 9" },
   ];
 
-  return (
-    <Container fluid className="py-5 bg-light" style={{ fontFamily: "'Poppins', sans-serif" }}>
-      <h2 className="text-center text-warning mb-4">Discover Our Designs</h2>
+  const offers = [
+    { icon: <Bolt color="secondary" />, text: <strong>50% off on all design packages!</strong> },
+    { icon: null, text: "Limited time only." },
+    { icon: <Star color="secondary" />, text: <strong>Free consultation</strong> },
+    { icon: <LocalOffer color="secondary" />, text: <strong>Discounted rates</strong> },
+    { icon: null, text: "Returning customers." },
+    { icon: <EmojiEvents color="secondary" />, text: <strong>Special bundle deals</strong> },
+    { icon: null, text: "Graphic & Web Design Services." }
+  ];
 
-      <Row className="justify-content-center">
-        <Col xs={12} md={8} lg={6}>
-          <Carousel interval={3000} pause="hover" className="custom-carousel">
-            {images.map((image, index) => (
-              <Carousel.Item key={index}>
-                <img
-                  className="d-block w-100 img-fluid"
+  return (
+    <Box sx={{ 
+      py: 8,
+      backgroundColor: theme.palette.grey[100],
+      backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7))'
+    }}>
+      <Container maxWidth="lg">
+        <Typography 
+          variant="h3" 
+          component="h2" 
+          align="center" 
+          sx={{ 
+            mb: 6,
+            color: theme.palette.secondary.main,
+            fontWeight: 700,
+            letterSpacing: 1,
+            position: 'relative',
+            '&:after': {
+              content: '""',
+              display: 'block',
+              width: '80px',
+              height: '4px',
+              backgroundColor: theme.palette.secondary.main,
+              margin: '16px auto 0',
+              borderRadius: '2px'
+            }
+          }}
+        >
+          Discover Our Designs
+        </Typography>
+
+        <Grid container spacing={4} alignItems="center" justifyContent="center">
+          <Grid item xs={12} md={8} lg={7}>
+            <Carousel
+              animation="fade"
+              duration={1000}
+              interval={4000}
+              navButtonsAlwaysVisible={!isMobile}
+              sx={{
+                borderRadius: 2,
+                overflow: 'hidden',
+                boxShadow: 3,
+                '& .CarouselItem': {
+                  height: '400px',
+                  [theme.breakpoints.down('sm')]: {
+                    height: '300px'
+                  }
+                }
+              }}
+            >
+              {images.map((image, index) => (
+                <Box 
+                  key={index}
+                  component="img"
                   src={image.src}
                   alt={image.alt}
-                  style={{ maxHeight: "350px", objectFit: "cover" }} // Adjusted height
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
                 />
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </Col>
+              ))}
+            </Carousel>
+          </Grid>
 
-        {/* Advert Section */}
-        <Col xs={12} md={4} lg={3} className="mt-4 mt-md-0">
-          <div className="advert bg-white shadow-lg rounded-lg p-4" style={{ height: "350px", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
-            <h4 className="text-center text-warning mb-3 fw-bold">
-              Current Offers{" "}
-              <span role="img" aria-label="lightning" className="blinking">⚡</span>
-            </h4>
+          <Grid item xs={12} md={4} lg={5}>
+            <Card sx={{ 
+              height: '400px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              borderRadius: 2,
+              boxShadow: 3,
+              background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.grey[50]} 100%)`,
+              position: 'relative',
+              overflow: 'hidden',
+              '&:before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`
+              }
+            }}>
+              <CardContent sx={{ p: 4 }}>
+                <Typography 
+                  variant="h5" 
+                  component="h3" 
+                  align="center" 
+                  sx={{ 
+                    mb: 3,
+                    fontWeight: 700,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 1
+                  }}
+                >
+                  Current Offers
+                  <Bolt color="secondary" sx={{ animation: 'pulse 1.5s infinite' }} />
+                </Typography>
 
-            {/* Scrolling Offers */}
-            <div className="offer-scroll-container" style={{ height: "200px", overflow: "hidden", position: "relative" }}>
-              <ul className="offer-list" style={{ paddingLeft: "0", marginBottom: "0", animation: "scroll-up 10s linear infinite", textAlign: "center" }}>
-          <li>🔥 <strong>50% off on all design packages!</strong></li>
-          <li> Limited time only.</li>
-          <li>💥 <strong>Free consultation</strong></li>
-          <li>⭐ <strong>Discounted rates</strong> </li>
-          <li>Returning customers.</li>
-          <li>🚀 <strong>Special bundle deals</strong> </li>
-          <li>Graphic & Web Design Services.</li>
-              </ul>
-            </div>
-          </div>
-        </Col>
-            </Row>
+                <Box sx={{ 
+                  height: '260px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  '&:hover $offerList': {
+                    animationPlayState: 'paused'
+                  }
+                }}>
+                  <OfferList>
+                    {offers.map((offer, index) => (
+                      <OfferItem key={index}>
+                        {offer.icon}
+                        <span>{offer.text}</span>
+                      </OfferItem>
+                    ))}
+                    {/* Duplicate for seamless looping */}
+                    {offers.map((offer, index) => (
+                      <OfferItem key={`dup-${index}`}>
+                        {offer.icon}
+                        <span>{offer.text}</span>
+                      </OfferItem>
+                    ))}
+                  </OfferList>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
 
-      <Row className="justify-content-center mt-4">
-        <Col xs="auto">
+        <Box sx={{ textAlign: 'center', mt: 6 }}>
           <Button
-            variant="warning"
-            size="lg"
-            className="px-5 py-3 fs-5 fw-bold rounded-3 shadow-sm"
+            variant="contained"
+            color="secondary"
+            size="large"
             onClick={onHireUsClick}
-            style={{ transition: "background-color 0.3s" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#ffcc00")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "orange")
-            }
+            sx={{
+              px: 6,
+              py: 2,
+              fontSize: '1.1rem',
+              fontWeight: 700,
+              borderRadius: 2,
+              boxShadow: 3,
+              textTransform: 'none',
+              transition: 'all 0.3s',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: 4,
+                backgroundColor: theme.palette.secondary.dark
+              }
+            }}
           >
-            Hire Us
+            Hire Our Team
           </Button>
-        </Col>
-      </Row>
-    </Container>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 

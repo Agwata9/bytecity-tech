@@ -24,7 +24,6 @@ const NavbarComponent: React.FC = () => {
             height="50"
             alt="ByteCity Tech Solutions logo"
           />
-          &nbsp; ByteCity Tech
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" onClick={handleToggle} />
         <Navbar.Collapse id="navbar-nav">
