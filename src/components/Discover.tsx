@@ -3,27 +3,23 @@ import {
   Box,
   Container,
   Typography,
-  Button,
+  Divider,
   Grid,
   Card,
   CardContent,
   useTheme,
-  useMediaQuery
+  useMediaQuery,
+  styled,
+  Button
 } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 import { EmojiEvents, LocalOffer, Star, Bolt } from '@mui/icons-material';
-import { styled, keyframes } from '@mui/system';
 
-// Define the props for the Discover component
 interface DiscoverProps {
   onHireUsClick: () => void;
 }
 
-const scrollUp = keyframes`
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-100%); }
-`;
-
+// Create styled components outside the main component
 const OfferItem = styled('li')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -39,11 +35,7 @@ const OfferItem = styled('li')(({ theme }) => ({
 const OfferList = styled('ul')({
   listStyle: 'none',
   padding: 0,
-  margin: 0,
-  animation: `${scrollUp} 15s linear infinite`,
-  '&:hover': {
-    animationPlayState: 'paused'
-  }
+  margin: 0
 });
 
 const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
@@ -76,34 +68,32 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
     <Box sx={{ 
       py: 8,
       backgroundColor: theme.palette.grey[100],
-      backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7))'
     }}>
       <Container maxWidth="lg">
-        <Typography 
-          variant="h3" 
-          component="h2" 
-          align="center" 
-          sx={{ 
-            mb: 6,
+        <Typography
+          variant="h3"
+          component="h2"
+          align="center"
+          sx={{
             color: theme.palette.secondary.main,
             fontWeight: 700,
-            letterSpacing: 1,
-            position: 'relative',
-            '&:after': {
-              content: '""',
-              display: 'block',
-              width: '80px',
-              height: '4px',
-              backgroundColor: theme.palette.secondary.main,
-              margin: '16px auto 0',
-              borderRadius: '2px'
-            }
+            mb: 3,
           }}
         >
           Discover Our Designs
         </Typography>
-
-        <Grid container spacing={4} alignItems="center" justifyContent="center">
+        
+        <Divider 
+          sx={{ 
+            width: 60, 
+            height: 4, 
+            backgroundColor: theme.palette.secondary.main,
+            mb: 6,
+            mx: 'auto'
+          }} 
+        />
+        
+        <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} md={8} lg={7}>
             <Carousel
               animation="fade"
@@ -114,12 +104,6 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
                 borderRadius: 2,
                 overflow: 'hidden',
                 boxShadow: 3,
-                '& .CarouselItem': {
-                  height: '400px',
-                  [theme.breakpoints.down('sm')]: {
-                    height: '300px'
-                  }
-                }
               }}
             >
               {images.map((image, index) => (
@@ -130,9 +114,12 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
                   alt={image.alt}
                   sx={{
                     width: '100%',
-                    height: '100%',
+                    height: '400px',
                     objectFit: 'cover',
-                    display: 'block'
+                    display: 'block',
+                    [theme.breakpoints.down('sm')]: {
+                      height: '300px'
+                    }
                   }}
                 />
               ))}
@@ -147,18 +134,8 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
               justifyContent: 'center',
               borderRadius: 2,
               boxShadow: 3,
-              background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.grey[50]} 100%)`,
               position: 'relative',
               overflow: 'hidden',
-              '&:before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '4px',
-                background: `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`
-              }
             }}>
               <CardContent sx={{ p: 4 }}>
                 <Typography 
@@ -175,27 +152,17 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
                   }}
                 >
                   Current Offers
-                  <Bolt color="secondary" sx={{ animation: 'pulse 1.5s infinite' }} />
+                  <Bolt color="secondary" />
                 </Typography>
 
                 <Box sx={{ 
                   height: '260px',
                   overflow: 'hidden',
                   position: 'relative',
-                  '&:hover $offerList': {
-                    animationPlayState: 'paused'
-                  }
                 }}>
                   <OfferList>
                     {offers.map((offer, index) => (
                       <OfferItem key={index}>
-                        {offer.icon}
-                        <span>{offer.text}</span>
-                      </OfferItem>
-                    ))}
-                    {/* Duplicate for seamless looping */}
-                    {offers.map((offer, index) => (
-                      <OfferItem key={`dup-${index}`}>
                         {offer.icon}
                         <span>{offer.text}</span>
                       </OfferItem>
@@ -221,12 +188,6 @@ const Discover: React.FC<DiscoverProps> = ({ onHireUsClick }) => {
               borderRadius: 2,
               boxShadow: 3,
               textTransform: 'none',
-              transition: 'all 0.3s',
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: 4,
-                backgroundColor: theme.palette.secondary.dark
-              }
             }}
           >
             Hire Our Team
