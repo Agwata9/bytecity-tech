@@ -13,7 +13,6 @@ const Home: React.FC = () => {
   return (
     <div>
       <Hero />
-    
       <CustomAccordion />
       <Services />
       <Message />

@@ -1,112 +1,190 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { FaCheckCircle } from 'react-icons/fa';
+import {
+    Box,
+    Typography,
+    Card,
+    CardContent,
+    CardMedia,
+    Button,
+    Divider,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Container,
+    Grid,
+    useTheme,
+    Fade,
+} from '@mui/material';
+import { CheckCircle as CheckCircleIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+
+const services = [
+    {
+        title: 'Web Development',
+        image: 'web-development.png',
+        steps: [
+            { title: 'Website Design and Development' },
+            { title: 'E-commerce Integration' },
+            { title: 'Website Maintenance' },
+        ],
+        route: '/web-design',
+    },
+    {
+        title: 'Graphic & Design',
+        image: 'graphic-design.png',
+        steps: [
+            { title: 'Branding & Logo Design' },
+            { title: 'Print & Digital Design' },
+            { title: 'Marketing Materials' },
+        ],
+        route: '/graphic-design',
+    },
+    {
+        title: 'Social Media Management',
+        image: 'social-media-management.png',
+        steps: [
+            { title: 'Content Strategy' },
+            { title: 'Community Management' },
+            { title: 'Analytics & Reporting' },
+        ],
+        route: '/social-media-management',
+    },
+];
 
 const Services: React.FC = () => {
     const navigate = useNavigate();
-
-    const services = [
-        {
-            title: 'Web Development',
-            image: 'web-development.png',
-            steps: [
-                { title: 'Website Design and Development' },
-                { title: 'E-commerce Integration' },
-                { title: 'Website Maintenance' }
-            ],
-            route: '/web-design'
-        },
-        {
-            title: 'Graphic & Design',
-            image: 'graphic-design.png',
-            steps: [
-                { title: 'Branding & Logo Design' },
-                { title: 'Print & Digital Design' },
-                { title: 'Marketing Materials' }
-            ],
-            route: '/graphic-design'
-        },
-        {
-            title: 'Social Media Management',
-            image: 'social-media-management.png',
-            steps: [
-                { title: 'Content Strategy' },
-                { title: 'Community Management' },
-                { title: 'Analytics & Reporting' }
-            ],
-            route: '/social-media-management'
-        }
-    ];
+    const theme = useTheme();
 
     return (
-        <section className="py-5 position-relative" 
-            style={{
-                background: `linear-gradient(rgba(255, 159, 0, 0.1), rgba(255, 159, 0, 0.05)), url("accordion-bg01.png")`,
+        <Box
+            component="section"
+            py={{ xs: 6, md: 10 }}
+            sx={{
+                bgcolor: theme.palette.background.default,
+                backgroundImage: `url("accordion-bg01.png")`,
+                backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center'
-            }}>
-            <Container className="position-relative z-index-1">
-                <div className="text-center mb-4 mb-md-5">
-                    <h2 className="display-5 fw-bold text-primary mb-3">
+                backgroundPosition: 'center',
+            }}
+        >
+            <Container>
+                <Box textAlign="center" mb={6}>
+                    <Typography
+                        variant="h2"
+                        color="warning.main"
+                        fontWeight={700}
+                        gutterBottom
+                        sx={{
+                            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                        }}
+                    >
                         Our Core Services
-                    </h2>
-                    <div className="d-flex justify-content-center mb-4">
-                        <hr className="w-25 border-2 border-primary opacity-75" />
-                    </div>
-                    <p className="lead text-muted mx-auto" style={{ maxWidth: '600px' }}>
-                        Comprehensive digital solutions tailored to boost your online presence
-                    </p>
-                </div>
+                    </Typography>
+                    <Divider
+                        sx={{
+                            width: 80,
+                            mx: 'auto',
+                            borderBottomWidth: 3,
+                            borderColor: theme.palette.warning.main,
+                            opacity: 0.8,
+                            mb: 2,
+                        }}
+                    />
+                    <Typography
+                        variant="body1"
+                        color="text.secondary"
+                        sx={{ maxWidth: 600, mx: 'auto' }}
+                    >
+                        Comprehensive digital solutions tailored to boost your online presence.
+                    </Typography>
+                </Box>
 
-                <Row className="g-4 justify-content-center">
+                <Grid container spacing={4} justifyContent="center">
                     {services.map((service, index) => (
-                        <Col key={index} xl={4} lg={6} md={6} sm={12} className="d-flex">
-                            <Card className="h-100 shadow-sm border-0 flex-fill hover-effect">
-                                <Card.Body className="d-flex flex-column p-4">
-                                    <div className="mb-4 text-center">
-                                        <img
-                                            src={service.image}
+                        <Grid item xs={12} sm={6} md={4} key={service.title}>
+                            <Fade in timeout={600 + index * 200}>
+                                <Card
+                                    elevation={0}
+                                    sx={{
+                                        height: '100%',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        borderRadius: 4,
+                                        boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                                        transition: 'transform 0.2s, box-shadow 0.2s',
+                                        '&:hover': {
+                                            transform: 'translateY(-8px) scale(1.03)',
+                                            boxShadow: '0 16px 40px rgba(0,0,0,0.13)',
+                                        },
+                                        bgcolor: theme.palette.background.paper,
+                                    }}
+                                >
+                                    {service.image && (
+                                        <CardMedia
+                                            component="img"
+                                            image={service.image}
                                             alt={service.title}
-                                            className="img-fluid rounded-3 mb-3"
-                                            style={{
-                                                height: '180px',
-                                                width: '100%',
-                                                objectFit: 'contain'
+                                            sx={{
+                                                height: 160,
+                                                objectFit: 'contain',
+                                                borderRadius: '16px 16px 0 0',
+                                                bgcolor: theme.palette.warning.light,
                                             }}
                                         />
-                                        <h3 className="fw-bold text-primary mb-3 fs-4">
+                                    )}
+                                    <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                                        <Typography
+                                            variant="h6"
+                                            color="warning.main"
+                                            fontWeight={700}
+                                            textAlign="center"
+                                            gutterBottom
+                                            sx={{ letterSpacing: 1 }}
+                                        >
                                             {service.title}
-                                        </h3>
-                                    </div>
-                                    
-                                    <ul className="list-unstyled flex-grow-1">
-                                        {service.steps.map((step, stepIndex) => (
-                                            <li key={stepIndex} className="d-flex align-items-start mb-2">
-                                                <FaCheckCircle
-                                                    color="var(--primary-color)"
-                                                    size={20}
-                                                    className="me-2 flex-shrink-0"
-                                                />
-                                                <span className="text-secondary">{step.title}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-
-                                    <Button
-                                        variant="outline-primary"
-                                        className="fw-bold mt-4 rounded-pill"
-                                        onClick={() => navigate(service.route)}
-                                    >
-                                        Explore Service
-                                    </Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                                        </Typography>
+                                        <List dense>
+                                            {service.steps.map((step, stepIndex) => (
+                                                <ListItem key={stepIndex} disableGutters>
+                                                    <ListItemIcon sx={{ minWidth: 32 }}>
+                                                        <CheckCircleIcon color="warning" fontSize="small" />
+                                                    </ListItemIcon>
+                                                    <ListItemText
+                                                        primary={step.title}
+                                                        primaryTypographyProps={{
+                                                            color: 'text.secondary',
+                                                            fontSize: '1rem',
+                                                        }}
+                                                    />
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                        <Box flexGrow={1} />
+                                        <Button
+                                            variant="contained"
+                                            color="warning"
+                                            sx={{
+                                                mt: 3,
+                                                borderRadius: 99,
+                                                fontWeight: 600,
+                                                textTransform: 'none',
+                                                boxShadow: 'none',
+                                                px: 4,
+                                                alignSelf: 'center',
+                                            }}
+                                            onClick={() => navigate(service.route)}
+                                        >
+                                            Explore Service
+                                        </Button>
+                                    </CardContent>
+                                </Card>
+                            </Fade>
+                        </Grid>
                     ))}
-                </Row>
+                </Grid>
             </Container>
-        </section>
+        </Box>
     );
 };
 

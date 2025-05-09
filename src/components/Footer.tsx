@@ -1,53 +1,173 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import {
+  Box,
+  Container,
+  Typography,
+  Link,
+  Stack,
+  Divider,
+  useTheme,
+} from "@mui/material";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Footer = () => {
+  const theme = useTheme();
+
   return (
-    <footer className="bg-dark text-white py-5">
-      <Container>
-        <Row>
+    <Box
+      component="footer"
+      sx={{
+        bgcolor: theme.palette.grey[900],
+        color: theme.palette.common.white,
+        py: 5,
+        mt: 4,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={4}
+          justifyContent="space-between"
+        >
           {/* Company Information */}
-          <Col md={4} sm={12} className="mb-4">
-            <h5 className="text-warning">ByteCity Tech Computer Solutions</h5>
-            <p className="text-light">
+          <Box flex={1}>
+            <Typography
+              variant="h6"
+              sx={{ color: theme.palette.warning.main, mb: 1 }}
+            >
+              ByteCity Tech Computer Solutions
+            </Typography>
+            <Typography variant="body2" color="inherit">
               Delivering innovative tech solutions for your business. From IT consultancy to system sourcing and graphic design, we've got you covered!
-            </p>
-          </Col>
+            </Typography>
+          </Box>
 
           {/* Quick Links */}
-          <Col md={4} sm={6} className="mb-4">
-            <h5 className="text-warning">Quick Links</h5>
-            <ul className="list-unstyled">
-              <li><a href="/" className="text-light text-decoration-none">Home</a></li>
-              
-              <li><a href="/about-us" className="text-light text-decoration-none">About Us</a></li>
-              <li><a href="/our-services" className="text-light text-decoration-none">Our Services</a></li>
-              
-              
-              <li><a href="/training" className="text-light text-decoration-none">Training</a></li>
-              <li><a href="/store" className="text-light text-decoration-none">Computer Store</a></li>
-              <li><a href="/careers" className="text-light text-decoration-none">Careers</a></li>
-              <li><a href="/contact-us" className="text-light text-decoration-none">Contact Us</a></li>
-              <li><a href="/portfolio" className="text-light text-decoration-none">Portfolio</a></li>
-            </ul>
-          </Col>
+          <Box flex={1}>
+            <Typography
+              variant="h6"
+              sx={{ color: theme.palette.warning.main, mb: 1 }}
+            >
+              Quick Links
+            </Typography>
+            <Stack spacing={0.5}>
+              <Link href="/" color="inherit" underline="hover">
+                Home
+              </Link>
+              <Link href="/about-us" color="inherit" underline="hover">
+                About Us
+              </Link>
+              <Link href="/our-services" color="inherit" underline="hover">
+                Our Services
+              </Link>
+              <Link href="/training" color="inherit" underline="hover">
+                Training
+              </Link>
+              <Link href="/store" color="inherit" underline="hover">
+                Computer Store
+              </Link>
+              <Link href="/careers" color="inherit" underline="hover">
+                Careers
+              </Link>
+              <Link href="/contact-us" color="inherit" underline="hover">
+                Contact Us
+              </Link>
+              <Link href="/portfolio" color="inherit" underline="hover">
+                Portfolio
+              </Link>
+            </Stack>
+          </Box>
 
           {/* Contact and Social Media */}
-          <Col md={4} sm={6} className="mb-4">
-            <h5 className="text-warning">Contact Us</h5>
-            <p className="text-light">📧 Email: <a href="mailto:info@bytecity.tech" className="text-light">info@bytecity.tech</a></p>
-            <p className="text-light">📞 Phone: <a href="tel:+254777439049" className="text-light">+254 777 439 049</a></p>
-            <p className="text-light">💬 WhatsApp: <a href="https://wa.me/254702439049" className="text-light">+254 702 439 049</a></p>
-
-            <div>
-              <a href="https://www.facebook.com" className="text-light me-3"><i className="fab fa-facebook fa-2x"></i></a>
-              <a href="https://www.twitter.com" className="text-light me-3"><i className="fab fa-twitter fa-2x"></i></a>
-              <a href="https://www.linkedin.com" className="text-light me-3"><i className="fab fa-linkedin fa-2x"></i></a>
-              <a href="https://www.instagram.com" className="text-light"><i className="fab fa-instagram fa-2x"></i></a>
-            </div>
-          </Col>
-        </Row>
+          <Box flex={1}>
+            <Typography
+              variant="h6"
+              sx={{ color: theme.palette.warning.main, mb: 1 }}
+            >
+              Contact Us
+            </Typography>
+            <Stack spacing={1}>
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <EmailIcon fontSize="small" color="inherit" />
+                <Link
+                  href="mailto:info@bytecity.tech"
+                  color="inherit"
+                  underline="hover"
+                >
+                  info@bytecity.tech
+                </Link>
+              </Stack>
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <PhoneIcon fontSize="small" color="inherit" />
+                <Link
+                  href="tel:+254777439049"
+                  color="inherit"
+                  underline="hover"
+                >
+                  +254 777 439 049
+                </Link>
+              </Stack>
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <WhatsAppIcon fontSize="small" color="inherit" />
+                <Link
+                  href="https://wa.me/254702439049"
+                  color="inherit"
+                  underline="hover"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  +254 702 439 049
+                </Link>
+              </Stack>
+            </Stack>
+            <Divider sx={{ my: 2, bgcolor: theme.palette.grey[800] }} />
+            <Stack direction="row" spacing={2}>
+              <Link
+                href="https://www.facebook.com"
+                color="inherit"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+              >
+                <FacebookIcon fontSize="large" />
+              </Link>
+              <Link
+                href="https://www.twitter.com"
+                color="inherit"
+                target="_blank"
+                rel="noopener"
+                aria-label="Twitter"
+              >
+                <TwitterIcon fontSize="large" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com"
+                color="inherit"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon fontSize="large" />
+              </Link>
+              <Link
+                href="https://www.instagram.com"
+                color="inherit"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <InstagramIcon fontSize="large" />
+              </Link>
+            </Stack>
+          </Box>
+        </Stack>
       </Container>
-    </footer>
+    </Box>
   );
 };
 

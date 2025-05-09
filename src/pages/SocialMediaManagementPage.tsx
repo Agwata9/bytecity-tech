@@ -1,10 +1,26 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import {
+  Container,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  Button,
+  Badge,
+
+} from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBullhorn, faRocket } from '@fortawesome/free-solid-svg-icons';
 import {
-  faTiktok, faInstagram, faFacebook, faTwitter,
-  faWhatsapp, faTelegram, faLinkedin, faSlack, faDiscord
+  faTiktok,
+  faInstagram,
+  faFacebook,
+  faTwitter,
+  faWhatsapp,
+  faTelegram,
+  faLinkedin,
+  faSlack,
+  faDiscord,
 } from '@fortawesome/free-brands-svg-icons';
 
 const SocialMediaManagementPage: React.FC = () => {
@@ -25,107 +41,102 @@ const SocialMediaManagementPage: React.FC = () => {
     { icon: faTelegram, name: 'Telegram', href: 'https://t.me/yourUsername' },
     { icon: faLinkedin, name: 'LinkedIn', href: 'https://linkedin.com/in/yourUsername' },
     { icon: faSlack, name: 'Slack', href: 'https://yourWorkspace.slack.com' },
-    { icon: faDiscord, name: 'Discord', href: 'https://discord.gg/yourInviteCode' }
+    { icon: faDiscord, name: 'Discord', href: 'https://discord.gg/yourInviteCode' },
   ];
 
   return (
-    <section className="py-3 py-md-5 bg-light">
+    <Box component="section" py={3} bgcolor="lightgray">
       {/* Hero Section */}
-      <section className="hero-section bg-warning bg-opacity-10 py-5">
-        <Container className="text-center">
-          <FontAwesomeIcon icon={faBullhorn} size="2x" className="text-warning mb-4" />
-          <h1 className="display-5 fw-bold text-warning mb-3">
-            Professional Social Media Solutions
-          </h1>
-          <div className="d-flex justify-content-center mb-4">
-            <hr className="w-25 border-2 border-warning opacity-75" />
-          </div>
-          <p className="lead text-muted mb-0 mx-auto" style={{ maxWidth: '600px' }}>
-            Transform your online presence with data-driven strategies and expert platform management
-          </p>
-        </Container>
-      </section>
+      <Box py={5} bgcolor="rgba(255, 193, 7, 0.1)" textAlign="center">
+        <FontAwesomeIcon icon={faBullhorn} size="2x" style={{ color: '#ffc107', marginBottom: '16px' }} />
+        <Typography variant="h4" fontWeight="bold" color="warning.main" gutterBottom>
+          Professional Social Media Solutions
+        </Typography>
+        <Box display="flex" justifyContent="center" mb={2}>
+          <Box width="25%" height="2px" bgcolor="warning.main" sx={{ opacity: 0.75 }} />
+        </Box>
+        <Typography variant="body1" color="text.secondary" maxWidth="600px" mx="auto">
+          Transform your online presence with data-driven strategies and expert platform management
+        </Typography>
+      </Box>
 
-      <Container className="mt-4 mt-md-5">
-        <header className="text-center mb-4 mb-md-5">
-          <h2 className="fw-bold text-warning mb-3 fs-4">
+      <Container>
+        <Box textAlign="center" mb={5}>
+          <Typography variant="h5" fontWeight="bold" color="warning.main" gutterBottom>
             Comprehensive Social Media Services
-          </h2>
-          <div className="d-flex justify-content-center mb-3">
-            <hr className="w-50 border-1 border-warning opacity-50" />
-          </div>
-          <p className="text-muted mx-auto" style={{ maxWidth: '800px' }}>
+          </Typography>
+          <Box display="flex" justifyContent="center" mb={2}>
+            <Box width="50%" height="1px" bgcolor="warning.main" sx={{ opacity: 0.5 }} />
+          </Box>
+          <Typography variant="body2" color="text.secondary" maxWidth="800px" mx="auto">
             End-to-end social media solutions tailored to amplify your brand's digital voice
-          </p>
-        </header>
+          </Typography>
+        </Box>
 
-        <Row className="g-4 justify-content-center">
+        <Box display="flex" flexWrap="wrap" justifyContent="center" gap={4}>
           {services.map((service, index) => (
-            <Col key={index} xl={4} lg={6} md={6} sm={12} className="d-flex">
-              <Card className="h-100 shadow-sm border-0 flex-fill">
-                <Card.Body className="d-flex flex-column p-4">
-                  <div className="mb-3 text-center">
-                    <FontAwesomeIcon 
-                      icon={service.icon} 
-                      className="text-warning mb-3" 
-                      size="2x"
-                    />
-                    <h3 className="fw-bold text-warning mb-2 fs-5">
-                      {service.title}
-                    </h3>
-                  </div>
-                  <div className="mt-auto">
-                    <div className="text-center mb-4">
-                      <span className="badge bg-warning text-dark px-4 py-2 rounded-pill">
-                        {service.price}
-                      </span>
-                    </div>
-                    <Button
-                      variant="outline-warning"
-                      className="w-100 fw-bold text-uppercase py-2"
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
+            <Card key={index} sx={{ width: 300, display: 'flex', flexDirection: 'column', boxShadow: 3 }}>
+              <CardContent sx={{ flexGrow: 1, textAlign: 'center' }}>
+                <FontAwesomeIcon icon={service.icon} size="2x" style={{ color: '#ffc107', marginBottom: '16px' }} />
+                <Typography variant="h6" fontWeight="bold" color="warning.main" gutterBottom>
+                  {service.title}
+                </Typography>
+                <Box mt="auto" mb={2}>
+                  <Badge
+                    badgeContent={service.price}
+                    color="warning"
+                    sx={{
+                      '& .MuiBadge-badge': {
+                        padding: '8px 16px',
+                        borderRadius: '16px',
+                        fontSize: '0.875rem',
+                      },
+                    }}
+                  />
+                </Box>
+                <Button variant="outlined" color="warning" fullWidth>
+                  Learn More
+                </Button>
+              </CardContent>
+            </Card>
           ))}
-        </Row>
+        </Box>
 
         {/* CTA Section */}
-        <div className="text-center mt-5 py-4 bg-warning bg-opacity-10 rounded-3">
-          <FontAwesomeIcon icon={faRocket} className="text-warning mb-4" size="2x" />
-          <h2 className="fw-bold text-secondary mb-3 fs-4">
+        <Box textAlign="center" mt={5} py={4} bgcolor="rgba(255, 193, 7, 0.1)" borderRadius={2}>
+          <FontAwesomeIcon icon={faRocket} size="2x" style={{ color: '#ffc107', marginBottom: '16px' }} />
+          <Typography variant="h5" fontWeight="bold" color="text.secondary" gutterBottom>
             Ready for Social Media Transformation?
-          </h2>
-          <Button variant="warning" className="px-5 py-3 fw-bold rounded-pill">
+          </Typography>
+          <Button variant="contained" color="warning" sx={{ px: 5, py: 2, borderRadius: '24px' }}>
             Launch Your Strategy
           </Button>
-        </div>
+        </Box>
 
         {/* Social Links */}
-        <div className="text-center mt-5 pt-4">
-          <h3 className="fw-bold text-secondary mb-4 fs-5">
+        <Box textAlign="center" mt={5} pt={4}>
+          <Typography variant="h6" fontWeight="bold" color="text.secondary" gutterBottom>
             Connect With Our Team
-          </h3>
-          <div className="d-flex flex-wrap gap-3 justify-content-center">
+          </Typography>
+          <Box display="flex" flexWrap="wrap" justifyContent="center" gap={2}>
             {socialLinks.map((social, idx) => (
-              <a
+              <Button
                 key={idx}
                 href={social.href}
-                className="btn btn-outline-warning d-flex align-items-center gap-2 rounded-pill px-4"
+                variant="outlined"
+                color="warning"
+                startIcon={<FontAwesomeIcon icon={social.icon} />}
                 target="_blank"
                 rel="noopener noreferrer"
+                sx={{ borderRadius: '24px', px: 3 }}
               >
-                <FontAwesomeIcon icon={social.icon} className="fs-5" />
-                <span className="d-none d-sm-inline">{social.name}</span>
-              </a>
+                {social.name}
+              </Button>
             ))}
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };
 

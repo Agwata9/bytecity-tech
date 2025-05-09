@@ -6,13 +6,11 @@ import {
   useTheme,
   useMediaQuery,
   Container,
-  Grid,
   Avatar,
-  Skeleton
+  Skeleton,
+  Stack
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
 
-// 1. Define image paths relative to public folder
 const clients = [
   { name: 'Die Cast', logo: '/clients/diecast.png' },
   { name: 'TechCorp', logo: '/clients/techcorp.png' },
@@ -23,50 +21,8 @@ const clients = [
   { name: 'Chiral', logo: '/clients/chiral.png' },
 ];
 
-// 2. Fallback image
 const fallbackLogo = '/clients/default-logo.png';
-
-// 3. Background image
 const backgroundImage = '/clients/background.jpg';
-
-// 4. Styled components
-const ClientSection = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  padding: theme.spacing(8, 2),
-  minHeight: '50vh',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundImage: `url(${backgroundImage})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    zIndex: 1
-  }
-}));
-
-const ClientAvatar = styled(Avatar)(({ theme }) => ({
-  width: theme.spacing(12),
-  height: theme.spacing(12),
-  transition: 'all 0.3s ease',
-  backgroundColor: theme.palette.background.paper,
-  '&:hover': {
-    transform: 'scale(1.1)',
-    boxShadow: theme.shadows[6]
-  },
-  [theme.breakpoints.down('sm')]: {
-    width: theme.spacing(8),
-    height: theme.spacing(8)
-  }
-}));
 
 const OurClients = () => {
   const theme = useTheme();
@@ -88,7 +44,30 @@ const OurClients = () => {
   };
 
   return (
-    <ClientSection>
+    <Box
+      sx={{
+        position: 'relative',
+        py: 8,
+        minHeight: '50vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          zIndex: 1,
+        },
+      }}
+    >
       <Container sx={{ position: 'relative', zIndex: 2 }}>
         <Typography
           variant="h3"
@@ -97,72 +76,87 @@ const OurClients = () => {
             color: theme.palette.warning.main,
             fontWeight: 700,
             mb: 3,
-            textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
+            textAlign: 'center',
+            textShadow: '1px 1px 3px rgba(0,0,0,0.5)',
           }}
         >
           Valued Clients
         </Typography>
-        
-        <Divider 
-          sx={{ 
-            width: 60, 
-            height: 4, 
+
+        <Divider
+          sx={{
+            width: 60,
+            height: 4,
             backgroundColor: theme.palette.warning.main,
             mb: 6,
-            mx: 'auto'
-          }} 
+            mx: 'auto',
+          }}
         />
-        
-        <Grid container spacing={4} justifyContent="center">
+
+        <Stack
+          direction="row"
+          flexWrap="wrap"
+          justifyContent="center"
+          spacing={4}
+          sx={{ gap: 4 }}
+        >
           {clients.map((client, index) => (
-            <Grid item key={index} xs={6} sm={4} md={3} lg={2}>
-              <Box sx={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
+            <Box
+              key={index}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                gap: 2
-              }}>
-                {loadingStates[index] && (
-                  <Skeleton 
-                    variant="rounded" 
-                    width={isMobile ? theme.spacing(8) : theme.spacing(12)} 
-                    height={isMobile ? theme.spacing(8) : theme.spacing(12)} 
-                  />
-                )}
-                
-                <ClientAvatar 
-                  alt={client.name}
-                  src={errorStates[index] ? fallbackLogo : client.logo}
+                gap: 2,
+              }}
+            >
+              {loadingStates[index] && (
+                <Skeleton
                   variant="rounded"
-                  sx={{ 
-                    display: loadingStates[index] ? 'none' : 'flex',
-                    bgcolor: 'background.paper'
-                  }}
-                  imgProps={{
-                    loading: "lazy",
-                    onLoad: () => handleImageLoad(index),
-                    onError: () => handleImageError(index)
-                  }}
+                  width={isMobile ? theme.spacing(8) : theme.spacing(12)}
+                  height={isMobile ? theme.spacing(8) : theme.spacing(12)}
                 />
-                
-                {!isMobile && (
-                  <Typography 
-                    variant="body1" 
-                    sx={{ 
-                      color: 'common.white',
-                      fontWeight: 500,
-                      textAlign: 'center'
-                    }}
-                  >
-                    {client.name}
-                  </Typography>
-                )}
-              </Box>
-            </Grid>
+              )}
+
+              <Avatar
+                alt={client.name}
+                src={errorStates[index] ? fallbackLogo : client.logo}
+                variant="rounded"
+                sx={{
+                  width: isMobile ? theme.spacing(8) : theme.spacing(12),
+                  height: isMobile ? theme.spacing(8) : theme.spacing(12),
+                  transition: 'all 0.3s ease',
+                  backgroundColor: theme.palette.background.paper,
+                  display: loadingStates[index] ? 'none' : 'flex',
+                  '&:hover': {
+                    transform: 'scale(1.1)',
+                    boxShadow: theme.shadows[6],
+                  },
+                }}
+                imgProps={{
+                  loading: 'lazy',
+                  onLoad: () => handleImageLoad(index),
+                  onError: () => handleImageError(index),
+                }}
+              />
+
+              {!isMobile && (
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: 'common.white',
+                    fontWeight: 500,
+                    textAlign: 'center',
+                  }}
+                >
+                  {client.name}
+                </Typography>
+              )}
+            </Box>
           ))}
-        </Grid>
+        </Stack>
       </Container>
-    </ClientSection>
+    </Box>
   );
 };
 

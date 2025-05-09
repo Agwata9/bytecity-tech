@@ -1,43 +1,80 @@
 import React from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Box, Button, Container, Typography, Divider } from '@mui/material';
 
 const OurServicesHeader: React.FC = () => {
   return (
-    <section
-      className="hero d-flex align-items-center justify-content-center position-relative"
-      style={{
-        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), url("services-hero-image.jpg")',
+    <Box
+      component="section"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("services-hero-image.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '60vh',
       }}
     >
-      <Container className="text-center position-relative z-index-1">
-        <div className="hero-content text-light">
-          <h1 className="display-4 fw-bold mb-3 text-warning">
+      <Container
+        sx={{
+          textAlign: 'center',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        <Box sx={{ color: 'white' }}>
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: '2.5rem',
+              fontWeight: 'bold',
+              marginBottom: 3,
+              color: 'warning.main',
+            }}
+          >
             Our Digital Services
-          </h1>
-          <div className="d-flex justify-content-center mb-4">
-            <hr className="w-25 border-2 border-warning opacity-75" />
-          </div>
-          <p className="lead mb-4 fs-5 mx-auto" style={{ maxWidth: '600px' }}>
+          </Typography>
+          <Divider
+            sx={{
+              width: '25%',
+              borderWidth: 2,
+              borderColor: 'warning.main',
+              opacity: 0.75,
+              margin: '0 auto 16px',
+            }}
+          />
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: '1.25rem',
+              marginBottom: 4,
+              maxWidth: '600px',
+              marginX: 'auto',
+            }}
+          >
             Transform your online presence with our comprehensive suite of professional services
-          </p>
+          </Typography>
           <Button
-            variant="warning"
-            size="lg"
-            className="px-5 py-3 fw-bold rounded-pill hover-effect"
+            variant="contained"
+            size="large"
             href="#services"
-            style={{
-              background: 'var(--primary-color)',
-              borderColor: 'var(--primary-color)'
+            sx={{
+              px: 5,
+              py: 2,
+              fontWeight: 'bold',
+              borderRadius: '50px',
+              backgroundColor: 'primary.main',
+              '&:hover': {
+                backgroundColor: 'primary.dark',
+              },
             }}
           >
             Discover Solutions
           </Button>
-        </div>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };
 

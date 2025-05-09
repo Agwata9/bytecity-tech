@@ -1,73 +1,130 @@
-import { Container, Button } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Button,
+  Typography,
+  Container,
+  useTheme,
+} from "@mui/material";
 
-interface HeroProps {}
+const words = ["IDEAS", "SKILLS", "CONCEPTS", "THOUGHTS"];
 
-const Hero: React.FC<HeroProps> = () => {
-  const words = ["IDEAS", "SKILLS", "CONCEPTS", "THOUGHTS"];
+const Hero: React.FC = () => {
+  const theme = useTheme();
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [index, setIndex] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % words.length);
     }, 3000);
-
-    return () => {
-      setIsMounted(false);
-      clearInterval(interval);
-    };
-  }, [words.length]);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
-    if (isMounted) {
-      setCurrentWord(words[index]);
-    }
-  }, [index, isMounted, words]);
+    setCurrentWord(words[index]);
+  }, [index]);
 
   return (
-    <section
-      className="hero d-flex align-items-center justify-content-center position-relative"
-      style={{
-        background: `linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(255, 127, 0, 0.2)), url(/hero-image-05.png)`,
+    <Box
+      sx={{
+        minHeight: "100vh",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        background: `linear-gradient(45deg, rgba(0,0,0,0.7), rgba(255,127,0,0.2)), url(/hero-image-05.png)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        minHeight: "100vh",
       }}
     >
-      <Container className="text-center position-relative z-index-1">
-        <div className="hero-content">
-          <h1 className="display-3 fw-bold mb-4 text-white">
-           We Transform
-            <span className="d-block mt-3">
-              <span className="word-transition" key={currentWord}>
-                {currentWord}
-              </span>
-            </span>
-          </h1>
-          
-          <h2 className="display-5 fw-bold mb-4 text-warning">
-            Into Digital Excellence
-          </h2>
+      <Container
+        maxWidth="md"
+        sx={{
+          textAlign: "center",
+          position: "relative",
+          zIndex: 1,
+          px: { xs: 2, sm: 4 },
+        }}
+      >
+        <Box>
+          <Typography
+            variant="h2"
+            component="h1"
+            fontWeight="bold"
+            mb={3}
+            color="common.white"
+            sx={{
+              fontSize: { xs: "2.2rem", sm: "3rem", md: "3.5rem" },
+            }}
+          >
+            We Transform
+            <Box
+              component="span"
+              display="block"
+              mt={2}
+              sx={{
+                transition: "color 0.5s",
+                color: theme.palette.warning.main,
+                fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+                fontWeight: "bold",
+              }}
+              key={currentWord}
+            >
+              {currentWord}
+            </Box>
+          </Typography>
 
-          <p className="lead text-light mb-5 mx-auto" style={{ maxWidth: '600px' }}>
+          <Typography
+            variant="h4"
+            component="h2"
+            fontWeight="bold"
+            mb={3}
+            color="warning.main"
+            sx={{
+              fontSize: { xs: "1.3rem", sm: "2rem", md: "2.5rem" },
+            }}
+          >
+            Into Digital Excellence
+          </Typography>
+
+          <Typography
+            variant="body1"
+            color="common.white"
+            mb={5}
+            sx={{
+              maxWidth: 600,
+              mx: "auto",
+              fontSize: { xs: "1rem", sm: "1.2rem" },
+            }}
+          >
             Empower your business with cutting-edge IT solutions that drive innovation,
             efficiency, and sustainable growth.
-          </p>
+          </Typography>
 
           <Button
-            variant="warning"
-            size="lg"
-            className="px-5 py-3 fw-bold rounded-pill hover-effect"
+            variant="contained"
+            color="warning"
+            size="large"
+            sx={{
+              px: 5,
+              py: 2,
+              fontWeight: "bold",
+              borderRadius: "50px",
+              fontSize: { xs: "1rem", sm: "1.1rem" },
+              boxShadow: 3,
+              ":hover": {
+                backgroundColor: theme.palette.warning.dark,
+              },
+            }}
             onClick={() => (window.location.href = "/our-services")}
           >
             Explore Our Solutions
           </Button>
-        </div>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };
 

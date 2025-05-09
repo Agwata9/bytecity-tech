@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Box, Typography, Button, Container } from '@mui/material';
 import TrainingHero from '../components/TrainingHero';
 
 const trainingData = [
@@ -57,38 +57,70 @@ const TrainingSection = ({
   buttonText: string;
   reverse: boolean;
 }) => (
-  <Row
-    className={`align-items-center mb-5 ${reverse ? 'flex-lg-row-reverse' : ''}`}
-    style={{ rowGap: '20px' }}
+  <Box
+    display="flex"
+    flexDirection={{ xs: 'column', md: reverse ? 'row-reverse' : 'row' }}
+    alignItems="center"
+    mb={6}
+    gap={{ xs: 3, md: 5 }}
+    width="100%"
+    sx={{
+      px: { xs: 1, sm: 2, md: 0 },
+    }}
   >
-    <Col lg={6} md={12} className="text-center text-lg-start px-3">
-      <h3 className="text-warning fw-bold mb-3">{title}</h3>
-      <p className="text-muted">{description}</p>
-      <Button variant="warning" className="mt-3">
+    <Box
+      flex="1"
+      textAlign={{
+        xs: 'center',
+        md: reverse ? 'right' : 'left',
+      }}
+      width={{ xs: '100%', md: '50%' }}
+      mb={{ xs: 2, md: 0 }}
+    >
+      <Typography variant="h5" color="warning.main" fontWeight="bold" mb={2}>
+        {title}
+      </Typography>
+      <Typography variant="body1" color="text.secondary" mb={2}>
+        {description}
+      </Typography>
+      <Button variant="contained" color="warning">
         {buttonText}
       </Button>
-    </Col>
-    <Col lg={6} md={12} className="d-flex justify-content-center px-3">
-      <img
+    </Box>
+    <Box
+      flex="1"
+      display="flex"
+      justifyContent={{ xs: 'center', md: reverse ? 'flex-end' : 'flex-start' }}
+      alignItems="center"
+      width={{ xs: '100%', md: '50%' }}
+    >
+      <Box
+        component="img"
         src={image}
         alt={`${title} Course Image`}
-        className="img-fluid rounded"
-        style={{ maxHeight: '350px', objectFit: 'cover' }}
+        sx={{
+          width: { xs: '90vw', sm: 320, md: 380 },
+          maxWidth: '100%',
+          height: { xs: 180, sm: 220, md: 260 },
+          objectFit: 'cover',
+          borderRadius: 3,
+          boxShadow: 2,
+        }}
       />
-    </Col>
-  </Row>
+    </Box>
+  </Box>
 );
 
 const Training = () => {
   return (
-    <section className="training py-5 bg-light my-5" id="training">
+    <Box component="section" py={5} bgcolor="background.default" id="training">
       <TrainingHero />
-      <Container className="py-4">
+      <Container maxWidth="md">
         {trainingData.map((item, index) => (
           <TrainingSection key={index} {...item} />
         ))}
       </Container>
-    </section>
+    </Box>
   );
 };
 

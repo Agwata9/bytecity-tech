@@ -1,17 +1,43 @@
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import {
+  Container,
+  Grid,
+  Card,
+ 
+  Typography,
+  Button,
+  Divider,
+  Box,
+  Stack,
+  Avatar,
+  Paper,
+} from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp, faTiktok, faInstagram, faFacebook, faTelegram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { FaBuilding, FaLaptopCode, FaPalette, FaBullhorn, FaUsers, FaLightbulb } from "react-icons/fa";
+import {
+  faWhatsapp,
+  faTiktok,
+  faInstagram,
+  faFacebook,
+  faTelegram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  FaBuilding,
+  FaLaptopCode,
+  FaPalette,
+  FaBullhorn,
+  FaUsers,
+  FaLightbulb,
+} from "react-icons/fa";
 
 const AboutUs: React.FC = () => {
   const socialLinks = [
-    { href: 'https://wa.me/yourNumber', icon: faWhatsapp, name: 'WhatsApp' },
-    { href: 'https://www.tiktok.com/@yourUsername', icon: faTiktok, name: 'TikTok' },
-    { href: 'https://www.instagram.com/yourUsername', icon: faInstagram, name: 'Instagram' },
-    { href: 'https://www.facebook.com/yourUsername', icon: faFacebook, name: 'Facebook' },
-    { href: 'https://t.me/yourUsername', icon: faTelegram, name: 'Telegram' },
-    { href: 'https://www.linkedin.com/in/yourUsername', icon: faLinkedin, name: 'LinkedIn' },
+    { href: "https://wa.me/yourNumber", icon: faWhatsapp, name: "WhatsApp" },
+    { href: "https://www.tiktok.com/@yourUsername", icon: faTiktok, name: "TikTok" },
+    { href: "https://www.instagram.com/yourUsername", icon: faInstagram, name: "Instagram" },
+    { href: "https://www.facebook.com/yourUsername", icon: faFacebook, name: "Facebook" },
+    { href: "https://t.me/yourUsername", icon: faTelegram, name: "Telegram" },
+    { href: "https://www.linkedin.com/in/yourUsername", icon: faLinkedin, name: "LinkedIn" },
   ];
 
   const services = [
@@ -24,108 +50,173 @@ const AboutUs: React.FC = () => {
   ];
 
   return (
-    <section className="py-3 py-md-5 bg-light">
+    <Box sx={{ bgcolor: "background.default", minHeight: "100vh", py: 0 }}>
       {/* Hero Section */}
-      <section className="hero-section bg-warning bg-opacity-10 py-5">
-        <Container className="text-center">
-          <FaBuilding size={48} className="text-warning mb-4" />
-          <h1 className="display-5 fw-bold text-warning mb-3">
-            About ByteCity Tech
-          </h1>
-          <div className="d-flex justify-content-center mb-4">
-            <hr className="w-25 border-2 border-warning opacity-75" />
-          </div>
-          <p className="lead text-muted mb-0 mx-auto" style={{ maxWidth: '600px' }}>
-            Where innovation meets excellence in digital solutions
-          </p>
-        </Container>
-      </section>
+      <Box
+        sx={{
+          bgcolor: "warning.main",
+          py: { xs: 6, md: 10 },
+          color: "common.white",
+          textAlign: "center",
+          position: "relative",
+          mb: 6,
+        }}
+      >
+        <Avatar
+          sx={{
+            bgcolor: "common.white",
+            color: "warning.main",
+            width: 80,
+            height: 80,
+            mx: "auto",
+            mb: 2,
+            boxShadow: 3,
+          }}
+        >
+          <FaBuilding size={40} />
+        </Avatar>
+        <Typography variant="h3" fontWeight="bold" gutterBottom>
+          ByteCity Tech
+        </Typography>
+        <Typography variant="h6" sx={{ opacity: 0.9, mb: 2 }}>
+          Where innovation meets excellence in digital solutions
+        </Typography>
+        <Divider
+          sx={{
+            width: 80,
+            mx: "auto",
+            borderBottomWidth: 3,
+            borderColor: "common.white",
+            opacity: 0.5,
+            mb: 2,
+          }}
+        />
+      </Box>
 
-      <Container className="mt-4 mt-md-5">
+      <Container maxWidth="lg">
         {/* Mission & Vision */}
-        <Row className="g-4 justify-content-center mb-5">
-          <Col xl={6} lg={8} className="d-flex">
-            <Card className="h-100 shadow-sm border-0 flex-fill">
-              <Card.Body className="p-4">
-                <h3 className="fw-bold text-warning mb-4 fs-4 border-bottom border-2 border-warning pb-2">
+        <Grid container spacing={4} sx={{ mb: 6 }}>
+          <Grid item xs={12} md={6}>
+            <Paper elevation={2} sx={{ p: 4, height: "100%" }}>
+              <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+                <FaLightbulb size={28} color="#ff9800" />
+                <Typography variant="h5" fontWeight="bold" color="warning.main">
                   Our Mission
-                </h3>
-                <p className="text-secondary fs-5">
-                  Deliver innovative solutions through cutting-edge web design and digital strategies, 
-                  staying ahead of industry trends for exceptional service.
-                </p>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col xl={6} lg={8} className="d-flex">
-            <Card className="h-100 shadow-sm border-0 flex-fill">
-              <Card.Body className="p-4">
-                <h3 className="fw-bold text-warning mb-4 fs-4 border-bottom border-2 border-warning pb-2">
+                </Typography>
+              </Stack>
+              <Typography variant="body1" color="text.secondary">
+                Deliver innovative solutions through cutting-edge web design and digital strategies,
+                staying ahead of industry trends for exceptional service.
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Paper elevation={2} sx={{ p: 4, height: "100%" }}>
+              <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+                <FaBuilding size={28} color="#ff9800" />
+                <Typography variant="h5" fontWeight="bold" color="warning.main">
                   Our Vision
-                </h3>
-                <p className="text-secondary fs-5">
-                  Be the preferred digital partner transforming ideas into exceptional results, 
-                  exceeding expectations to help clients achieve digital success.
-                </p>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+                </Typography>
+              </Stack>
+              <Typography variant="body1" color="text.secondary">
+                Be the preferred digital partner transforming ideas into exceptional results,
+                exceeding expectations to help clients achieve digital success.
+              </Typography>
+            </Paper>
+          </Grid>
+        </Grid>
 
         {/* Core Services */}
-        <section className="my-4 my-md-5">
-          <header className="text-center mb-4 mb-md-5">
-            <h2 className="fw-bold text-warning mb-3 fs-4">
-              Core Services
-            </h2>
-            <div className="d-flex justify-content-center mb-3">
-              <hr className="w-50 border-1 border-warning opacity-50" />
-            </div>
-            <p className="text-muted mx-auto" style={{ maxWidth: '800px' }}>
-              Comprehensive digital solutions powering your business success
-            </p>
-          </header>
-
-          <Row className="g-4 justify-content-center">
+        <Box sx={{ mb: 8 }}>
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            color="warning.main"
+            textAlign="center"
+            gutterBottom
+          >
+            Core Services
+          </Typography>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            textAlign="center"
+            sx={{ mb: 4, maxWidth: 700, mx: "auto" }}
+          >
+            Comprehensive digital solutions powering your business success
+          </Typography>
+          <Grid container spacing={4}>
             {services.map((service, index) => (
-              <Col key={index} xl={4} lg={6} md={6} className="d-flex">
-                <Card className="h-100 shadow-sm border-0 flex-fill">
-                  <Card.Body className="d-flex flex-column p-4 text-center">
-                    <div className="text-warning mb-3" style={{ fontSize: '2rem' }}>
-                      {service.icon}
-                    </div>
-                    <h4 className="fw-bold text-warning mb-3">{service.title}</h4>
-                    <p className="text-muted flex-grow-1">{service.description}</p>
-                  </Card.Body>
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Card
+                  elevation={0}
+                  sx={{
+                    border: "1px solid",
+                    borderColor: "grey.200",
+                    borderRadius: 3,
+                    textAlign: "center",
+                    py: 5,
+                    px: 2,
+                    transition: "box-shadow 0.2s",
+                    "&:hover": { boxShadow: 6, borderColor: "warning.main" },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      color: "warning.main",
+                      fontSize: 48,
+                      mb: 2,
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {service.icon}
+                  </Box>
+                  <Typography variant="h6" fontWeight="bold" gutterBottom>
+                    {service.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {service.description}
+                  </Typography>
                 </Card>
-              </Col>
+              </Grid>
             ))}
-          </Row>
-        </section>
+          </Grid>
+        </Box>
 
         {/* Social Links */}
-        <section className="text-center mt-5 pt-4">
-          <h3 className="fw-bold text-secondary mb-4 fs-4">
+        <Box textAlign="center" sx={{ mt: 8, mb: 4 }}>
+          <Typography variant="h5" fontWeight="bold" color="warning.main" gutterBottom>
             Connect With Our Team
-          </h3>
-          <div className="d-flex flex-wrap gap-3 justify-content-center">
+          </Typography>
+          <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap" sx={{ mt: 2 }}>
             {socialLinks.map((social, idx) => (
-              <a
+              <Button
                 key={idx}
                 href={social.href}
-                className="btn btn-outline-warning d-flex align-items-center gap-2 rounded-pill px-4 py-2"
+                variant="contained"
+                color="warning"
+                startIcon={<FontAwesomeIcon icon={social.icon} />}
                 target="_blank"
                 rel="noopener noreferrer"
+                sx={{
+                  borderRadius: "50px",
+                  px: 3,
+                  py: 1,
+                  color: "common.white",
+                  fontWeight: "bold",
+                  boxShadow: 2,
+                  textTransform: "none",
+                  mb: 1,
+                }}
               >
-                <FontAwesomeIcon icon={social.icon} className="fs-5" />
-                <span className="d-none d-sm-inline">{social.name}</span>
-              </a>
+                {social.name}
+              </Button>
             ))}
-          </div>
-        </section>
+          </Stack>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };
 

@@ -1,56 +1,123 @@
 import React from 'react';
-import { Container, Col, Card, Row } from 'react-bootstrap';
+import {
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  CardActionArea,
+  Stack,
+  Container,
+  useTheme,
+} from '@mui/material';
+
+const services = [
+  {
+    title: 'Web Development',
+    text: 'Learn to create stunning, responsive websites and powerful web applications.',
+    image: '/image.jpg',
+  },
+  {
+    title: 'Python Programming & Data Analysis',
+    text: 'Master Python for automation, data visualization, and insights-driven analysis.',
+    image: '/image.jpg',
+  },
+  {
+    title: 'Graphics Design',
+    text: 'Design eye-catching visuals, logos, and branding materials for businesses.',
+    image: '/image.jpg',
+  },
+];
 
 const LetsTeachYou: React.FC = () => {
-  const services = [
-    { 
-      title: 'Web Development', 
-      text: 'Learn to create stunning, responsive websites and powerful web applications.', 
-      image: '/image.jpg' // Replace with the actual image path for web development
-    },
-    { 
-      title: 'Python Programming & Data Analysis', 
-      text: 'Master Python for automation, data visualization, and insights-driven analysis.', 
-      image: '/image.jpg' // Replace with the actual image path for Python and data analysis
-    },
-    { 
-      title: 'Graphics Design', 
-      text: 'Design eye-catching visuals, logos, and branding materials for businesses.', 
-      image: '/image.jpg' // Replace with the actual image path for graphic design
-    },
-  ];
+  const theme = useTheme();
 
   return (
-    <section id="services" className="py-5 bg-light">
-      <Container>
-        <h2 className="text-warning text-center mb-3">Let's Teach You</h2>
-        <hr
-          style={{
-            width: '60px',
-            margin: '0 auto',
-            borderTop: '3px solid orange',
+    <Box
+      component="section"
+      id="services"
+      sx={{
+        py: { xs: 4, md: 6 },
+        bgcolor: theme.palette.background.default,
+      }}
+    >
+      <Container maxWidth="md">
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          sx={{ color: theme.palette.warning.main, fontWeight: 700 }}
+        >
+          Let's Teach You
+        </Typography>
+        <Box
+          sx={{
+            width: 60,
+            height: 0,
+            borderTop: `3px solid ${theme.palette.warning.main}`,
+            mx: 'auto',
+            mb: 4,
           }}
         />
-        <Row className="justify-content-center mt-4">
-          {services.map((service, index) => (
-            <Col xs={12} sm={6} md={4} key={index} className="mb-4">
-              <Card className="h-100 shadow-sm">
-                <Card.Img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="card-img" 
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={3}
+          justifyContent="center"
+          alignItems="stretch"
+        >
+          {services.map((service, idx) => (
+            <Card
+              key={idx}
+              sx={{
+                flex: 1,
+                minWidth: { xs: '100%', sm: 250 },
+                maxWidth: 350,
+                mx: 'auto',
+                boxShadow: 3,
+                position: 'relative',
+                height: 340,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+              }}
+            >
+              <CardActionArea sx={{ height: '100%' }}>
+                <CardMedia
+                  component="img"
+                  image={service.image}
+                  alt={service.title}
+                  sx={{
+                    height: 340,
+                    filter: 'brightness(0.6)',
+                  }}
                 />
-                <Card.ImgOverlay className="d-flex flex-column justify-content-end bg-dark bg-opacity-50">
-                  <Card.Title className="text-white">{service.title}</Card.Title>
-                  <Card.Text className="text-light">{service.text}</Card.Text>
-                </Card.ImgOverlay>
-              </Card>
-            </Col>
+                <CardContent
+                  sx={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '100%',
+                    bgcolor: 'rgba(0,0,0,0.5)',
+                    color: '#fff',
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    sx={{ color: theme.palette.warning.main, fontWeight: 600 }}
+                  >
+                    {service.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: '#fff' }}>
+                    {service.text}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
           ))}
-        </Row>
+        </Stack>
       </Container>
-    </section>
+    </Box>
   );
 };
 
-export default LetsTeachYou;
+export default LetsTeachYou;

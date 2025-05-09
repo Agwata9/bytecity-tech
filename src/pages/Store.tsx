@@ -1,33 +1,64 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Box, Alert, AlertTitle, Typography, Button } from '@mui/material';
+import ConstructionIcon from '@mui/icons-material/Construction';
 
 const Store: React.FC = () => {
     return (
-        <div className="container text-center mt-5" style={{ paddingTop: '100px' }}>
+        <Box 
+            sx={{ 
+                textAlign: 'center', 
+                mt: 5, 
+                pt: '100px' 
+            }}
+        >
             {/* Alert Box */}
-            <div className="alert alert-warning d-flex align-items-center justify-content-center" role="alert" style={{ borderRadius: '10px' }}>
-                <i className="bi bi-cone-striped fs-1 me-3"></i> {/* Using Bootstrap Icons */}
-                <div>
-                    <h4 className="alert-heading fw-bold">Page Under Construction</h4>
-                    <p className="lead">We're working hard to bring this page to you. Stay tuned!</p>
-                    <hr />
-                    <p className="mb-0">Thanks for your patience!</p>
-                </div>
-            </div>
+            <Alert 
+                severity="warning" 
+                icon={<ConstructionIcon fontSize="large" />} 
+                sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    borderRadius: 2, 
+                    p: 3 
+                }}
+            >
+                <Box>
+                    <AlertTitle sx={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Page Under Construction</AlertTitle>
+                    <Typography variant="body1" sx={{ mb: 1 }}>
+                        We're working hard to bring this page to you. Stay tuned!
+                    </Typography>
+                    <Typography variant="body2" sx={{ mt: 1 }}>
+                        Thanks for your patience!
+                    </Typography>
+                </Box>
+            </Alert>
 
             {/* Image */}
-            <img 
+            <Box 
+                component="img" 
                 src="under-construction.png" 
-                className="img-fluid mt-4 rounded shadow-lg" 
                 alt="Under Construction" 
-                style={{ maxWidth: '300px' }} 
+                sx={{ 
+                    mt: 4, 
+                    maxWidth: '300px', 
+                    borderRadius: 2, 
+                    boxShadow: 3 
+                }} 
             />
 
             {/* Call to Action Button */}
-            <div className="mt-4">
-                <a href="/" className="btn btn-primary btn-lg">Return to Home</a>
-            </div>
-        </div>
+            <Box sx={{ mt: 4 }}>
+                <Button 
+                    variant="contained" 
+                    color="primary" 
+                    size="large" 
+                    href="/"
+                >
+                    Return to Home
+                </Button>
+            </Box>
+        </Box>
     );
 };
 
