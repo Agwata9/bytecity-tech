@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = () => {
       <Container className="text-center position-relative z-index-1">
         <div className="hero-content">
           <h1 className="display-3 fw-bold mb-4 text-white">
-            At ByteCity Tech We Transform
+           We Transform
             <span className="d-block mt-3">
               <span className="word-transition" key={currentWord}>
                 {currentWord}

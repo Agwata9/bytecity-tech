@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Grid, Box, Typography, Button, Paper } from "@mui/material";
 import { 
   FaCheckCircle, 
   FaPencilAlt, 
@@ -23,49 +23,86 @@ const ServiceSection = ({
   items: string[];
   bg?: string;
 }) => (
-  <section className={`py-4 py-md-5 ${bg || 'bg-white'}`}>
+  <Box py={4} sx={{ backgroundColor: bg || "white" }}>
     <Container>
-      <div className="text-center mb-4 mb-md-5">
-        <div className="icon-wrapper mb-3">
+      <Box textAlign="center" mb={4}>
+        <Box mb={2}>
           {React.cloneElement(icon as React.ReactElement, { 
-            className: "text-warning display-5 mb-3" 
+            style: { fontSize: "3rem", color: "#ffc107" } 
           })}
-        </div>
-        <h2 className="text-warning fw-bold mb-3 display-6">
+        </Box>
+        <Typography 
+          variant="h4" 
+          component="h2" 
+          color="warning.main" 
+          fontWeight="bold" 
+          gutterBottom
+        >
           {title}
-        </h2>
-        <div className="d-flex justify-content-center mb-4">
-          <hr className="w-25 border-2 border-warning opacity-75" />
-        </div>
-        <p className="text-muted lead mx-auto" style={{ maxWidth: '800px' }}>
+        </Typography>
+        <Box 
+          sx={{ 
+            width: "25%", 
+            height: "4px", 
+            backgroundColor: "warning.main", 
+            margin: "0 auto", 
+            opacity: 0.75 
+          }} 
+          mb={2} 
+        />
+        <Typography 
+          variant="body1" 
+          color="text.secondary" 
+          sx={{ maxWidth: "800px", margin: "0 auto" }}
+        >
           {description}
-        </p>
-      </div>
+        </Typography>
+      </Box>
 
-      <Row className="g-4 justify-content-center">
+      <Grid container spacing={4} justifyContent="center">
         {items.map((item, index) => (
-          <Col key={index} xl={3} lg={4} md={6} sm={12}>
-            <Card className="h-100 shadow-sm border-0 hover-effect">
-              <Card.Body className="d-flex align-items-center p-4">
-                <FaCheckCircle className="text-warning me-3 fs-5 flex-shrink-0" />
-                <span className="text-secondary">{item}</span>
-              </Card.Body>
-            </Card>
-          </Col>
+          <Grid item key={index} xl={3} lg={4} md={6} sm={12}>
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                padding: 2, 
+                display: "flex", 
+                alignItems: "center", 
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-5px)",
+                  boxShadow: "0 8px 25px rgba(255, 193, 7, 0.15)"
+                }
+              }}
+            >
+              <FaCheckCircle 
+                style={{ color: "#ffc107", marginRight: "1rem", fontSize: "1.5rem" }} 
+              />
+              <Typography variant="body1" color="text.secondary">
+                {item}
+              </Typography>
+            </Paper>
+          </Grid>
         ))}
-      </Row>
+      </Grid>
 
-      <div className="text-center mt-4 mt-md-5">
+      <Box textAlign="center" mt={4}>
         <Button 
-          variant="outline-warning" 
-          size="lg" 
-          className="fw-bold px-5 py-3 rounded-pill"
+          variant="outlined" 
+          color="warning" 
+          size="large" 
+          sx={{ 
+            fontWeight: "bold", 
+            paddingX: 5, 
+            paddingY: 2, 
+            borderRadius: "50px" 
+          }}
         >
           Explore {title}
         </Button>
-      </div>
+      </Box>
     </Container>
-  </section>
+  </Box>
 );
 
 const OurServices: React.FC = () => {
@@ -86,7 +123,7 @@ const OurServices: React.FC = () => {
           "Packaging Design",
           "Digital Illustrations"
         ]}
-        bg="bg-warning bg-opacity-10"
+        bg="#fff8e1"
       />
 
       {/* Web Development Section */}
@@ -109,7 +146,7 @@ const OurServices: React.FC = () => {
         title="Photography & Videography"
         description="Professional visual storytelling for all your needs."
         icon={<FaCamera />}
-        bg="bg-warning bg-opacity-10"
+        bg="#fff8e1"
         items={[
           "Event Coverage",
           "Wedding Photography",
@@ -137,12 +174,5 @@ const OurServices: React.FC = () => {
     </div>
   );
 };
-
-// Add global styles in your CSS file:
-// .hover-effect:hover {
-//   transform: translateY(-5px);
-//   transition: all 0.3s ease;
-//   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15) !important;
-// }
 
 export default OurServices;
