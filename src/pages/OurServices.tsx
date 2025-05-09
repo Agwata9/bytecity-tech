@@ -1,164 +1,148 @@
 import React from "react";
-import { Row, Col, ListGroup, ListGroupItem, Button } from "react-bootstrap";
-import { FaCheckCircle, FaPencilAlt, FaLaptopCode, FaCamera, FaChalkboardTeacher } from "react-icons/fa"; // Icons for the services
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { 
+  FaCheckCircle, 
+  FaPencilAlt, 
+  FaLaptopCode, 
+  FaCamera, 
+  FaChalkboardTeacher 
+} from "react-icons/fa";
 import OurServicesHeader from "../components/OurServicesHeader";
+
+// Reusable ServiceSection component with unified styling
+const ServiceSection = ({ 
+  title, 
+  description, 
+  icon, 
+  items, 
+  bg 
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  items: string[];
+  bg?: string;
+}) => (
+  <section className={`py-4 py-md-5 ${bg || 'bg-white'}`}>
+    <Container>
+      <div className="text-center mb-4 mb-md-5">
+        <div className="icon-wrapper mb-3">
+          {React.cloneElement(icon as React.ReactElement, { 
+            className: "text-warning display-5 mb-3" 
+          })}
+        </div>
+        <h2 className="text-warning fw-bold mb-3 display-6">
+          {title}
+        </h2>
+        <div className="d-flex justify-content-center mb-4">
+          <hr className="w-25 border-2 border-warning opacity-75" />
+        </div>
+        <p className="text-muted lead mx-auto" style={{ maxWidth: '800px' }}>
+          {description}
+        </p>
+      </div>
+
+      <Row className="g-4 justify-content-center">
+        {items.map((item, index) => (
+          <Col key={index} xl={3} lg={4} md={6} sm={12}>
+            <Card className="h-100 shadow-sm border-0 hover-effect">
+              <Card.Body className="d-flex align-items-center p-4">
+                <FaCheckCircle className="text-warning me-3 fs-5 flex-shrink-0" />
+                <span className="text-secondary">{item}</span>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+
+      <div className="text-center mt-4 mt-md-5">
+        <Button 
+          variant="outline-warning" 
+          size="lg" 
+          className="fw-bold px-5 py-3 rounded-pill"
+        >
+          Explore {title}
+        </Button>
+      </div>
+    </Container>
+  </section>
+);
 
 const OurServices: React.FC = () => {
   return (
-    <div>
-      <OurServicesHeader /> {/* Hero Header for Our Services */}
+    <div className="services-page">
+      <OurServicesHeader />
+      
+      {/* Graphic Design Section */}
+      <ServiceSection
+        title="Graphic & Design"
+        description="Transform your brand with visually stunning designs across all media formats."
+        icon={<FaPencilAlt />}
+        items={[
+          "Logo Design",
+          "Branding & Corporate Identity",
+          "Business Cards & Stationery",
+          "Posters, Flyers, & Brochures",
+          "Packaging Design",
+          "Digital Illustrations"
+        ]}
+        bg="bg-warning bg-opacity-10"
+      />
 
-      {/* Section 1: Graphic & Design */}
-      <div className="container py-5">
-        <div className="text-center mb-5">
-          <h2 className="text-warning fw-bold">
-            <FaPencilAlt className="me-2" /> Graphic and Design
-          </h2>
-          <p>
-            Our graphic design team brings your ideas to life with visually stunning, innovative designs. Whether you need a logo, marketing materials, or a complete rebranding, we are here to help.
-          </p>
-        </div>
+      {/* Web Development Section */}
+      <ServiceSection
+        title="Web Development"
+        description="Custom digital solutions that drive engagement and conversions."
+        icon={<FaLaptopCode />}
+        items={[
+          "Custom Websites",
+          "E-commerce Solutions",
+          "CMS Development",
+          "SEO Optimization",
+          "Web Applications",
+          "Mobile Responsive Design"
+        ]}
+      />
 
-        <Row>
-          <Col xs={12} md={6} lg={4}>
-            <ListGroup>
-              <ListGroupItem className="d-flex align-items-center">
-                <FaCheckCircle className="check-icon me-3" />
-                Logo Design
-              </ListGroupItem>
-              <ListGroupItem className="d-flex align-items-center">
-                <FaCheckCircle className="check-icon me-3" />
-                Branding & Corporate Identity
-              </ListGroupItem>
-              <ListGroupItem className="d-flex align-items-center">
-                <FaCheckCircle className="check-icon me-3" />
-                Business Cards & Stationery
-              </ListGroupItem>
-              <ListGroupItem className="d-flex align-items-center">
-                <FaCheckCircle className="check-icon me-3" />
-                Posters, Flyers, & Brochures
-              </ListGroupItem>
-            </ListGroup>
-            <div className="text-center mt-3">
-              <Button variant="warning">Explore More</Button>
-            </div>
-          </Col>
-        </Row>
-      </div>
+      {/* Photography Section */}
+      <ServiceSection
+        title="Photography & Videography"
+        description="Professional visual storytelling for all your needs."
+        icon={<FaCamera />}
+        bg="bg-warning bg-opacity-10"
+        items={[
+          "Event Coverage",
+          "Wedding Photography",
+          "Commercial Videography",
+          "Social Media Content",
+          "Product Photography",
+          "Aerial Drone Shots"
+        ]}
+      />
 
-      {/* Section 2: Web Development */}
-      <div className="bg-light py-5">
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="text-warning fw-bold">
-              <FaLaptopCode className="me-2" /> Web Development
-            </h2>
-            <p>
-              We build websites that not only look great but also perform well. From custom websites to e-commerce platforms, we have the skills to bring your vision to life. Our development process is centered around user experience, ensuring that your website is intuitive and easy to navigate.
-            </p>
-          </div>
-
-          <Row>
-            <Col xs={12} md={6} lg={4}>
-              <ListGroup>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  Custom Websites
-                </ListGroupItem>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  E-commerce Solutions
-                </ListGroupItem>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  CMS Development
-                </ListGroupItem>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  SEO Optimization
-                </ListGroupItem>
-              </ListGroup>
-              <div className="text-center mt-3">
-                <Button variant="warning">Explore More</Button>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </div>
-
-      {/* Section 3: Photography & Videography */}
-      <div className="py-5">
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="text-warning fw-bold">
-              <FaCamera className="me-2" /> Photography & Videography
-            </h2>
-            <p>
-              We offer a full range of photography and videography services tailored to your unique needs. Whether it's capturing a wedding, creating social media content, or producing commercial videos, our team is here to help.
-            </p>
-          </div>
-
-          <Row>
-            <Col xs={12} md={6} lg={4}>
-              <ListGroup>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  Event Coverage
-                </ListGroupItem>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  Weddings
-                </ListGroupItem>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  Social Media Clips
-                </ListGroupItem>
-              </ListGroup>
-              <div className="text-center mt-3">
-                <Button variant="warning">Explore More</Button>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </div>
-
-      {/* Section 4: Training */}
-      <div className="bg-light py-5">
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="text-warning fw-bold">
-              <FaChalkboardTeacher className="me-2" /> Training
-            </h2>
-            <p>
-              Our training programs are designed to empower individuals and teams with the knowledge and skills necessary for success in the digital world. Whether you're learning to design websites, shoot photos, or analyze data, we provide hands-on training for all skill levels.
-            </p>
-          </div>
-
-          <Row>
-            <Col xs={12} md={6} lg={4}>
-              <ListGroup>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  Web Design
-                </ListGroupItem>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  Photography & Videography
-                </ListGroupItem>
-                <ListGroupItem className="d-flex align-items-center">
-                  <FaCheckCircle className="check-icon me-3" />
-                  Graphic Design
-                </ListGroupItem>
-              </ListGroup>
-              <div className="text-center mt-3">
-                <Button variant="warning">Explore More</Button>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </div>
+      {/* Training Section */}
+      <ServiceSection
+        title="Training"
+        description="Empower your team with cutting-edge digital skills."
+        icon={<FaChalkboardTeacher />}
+        items={[
+          "Web Design Fundamentals",
+          "Advanced Photography",
+          "Graphic Design Masterclass",
+          "Digital Marketing",
+          "Video Editing",
+          "Social Media Management"
+        ]}
+      />
     </div>
   );
 };
+
+// Add global styles in your CSS file:
+// .hover-effect:hover {
+//   transform: translateY(-5px);
+//   transition: all 0.3s ease;
+//   box-shadow: 0 8px 25px rgba(255, 193, 7, 0.15) !important;
+// }
 
 export default OurServices;

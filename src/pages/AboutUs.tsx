@@ -1,94 +1,118 @@
 import React from "react";
-import AboutUsHeader from "../components/AboutUsHeader";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp, faTiktok, faInstagram, faFacebook, faTelegram, faLinkedin, faSlack, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp, faTiktok, faInstagram, faFacebook, faTelegram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 
 const AboutUs: React.FC = () => {
+  const socialLinks = [
+    { href: 'https://wa.me/yourNumber', icon: faWhatsapp, name: 'WhatsApp' },
+    { href: 'https://www.tiktok.com/@yourUsername', icon: faTiktok, name: 'TikTok' },
+    { href: 'https://www.instagram.com/yourUsername', icon: faInstagram, name: 'Instagram' },
+    { href: 'https://www.facebook.com/yourUsername', icon: faFacebook, name: 'Facebook' },
+    { href: 'https://t.me/yourUsername', icon: faTelegram, name: 'Telegram' },
+    { href: 'https://www.linkedin.com/in/yourUsername', icon: faLinkedin, name: 'LinkedIn' },
+  ];
+
+  const services = [
+    { title: "Web Design", description: "Creating visually appealing, user-friendly websites that communicate your brand's story" },
+    { title: "Training", description: "Empowering individuals and teams with essential digital skills" },
+    { title: "Graphic Design", description: "Crafting striking visuals that reinforce brand identity" },
+    { title: "Branding", description: "Developing holistic strategies that connect with your market" },
+    { title: "Social Media", description: "Growing your online presence with effective campaigns" },
+    { title: "Consultancy", description: "Actionable insights to navigate the digital landscape" },
+  ];
+
   return (
+    
     <>
-      <AboutUsHeader />
-      <section className="container py-5">
-        <div className="text-center mb-5">
-          <header>
-            <h2 className="text-warning fw-bold">About Us</h2>
-            <p className="lead">
-              Welcome to ByteCity Tech, where innovation and excellence converge. We are a dedicated team passionate about delivering top-tier services in web design, training, graphic design, branding, social media management, web administration, and consultancy.
+      
+      
+      <section className="py-4 py-md-5 bg-light">
+        <Container>
+          <div className="text-center mb-4 mb-md-5">
+            <h2 className="display-5 fw-bold text-warning mb-3">
+              About ByteCity Tech
+            </h2>
+            <div className="d-flex justify-content-center mb-4">
+              <hr className="w-25 border-2 border-warning opacity-75" />
+            </div>
+            <p className="lead text-muted mx-auto" style={{ maxWidth: '800px' }}>
+              Where innovation and excellence converge in digital solutions
             </p>
-          </header>
+          </div>
 
-          <section className="my-4">
-            <h3 className="text-warning fw-bold">Our Mission</h3>
-            <p className="lead">
-              We aim to be a center of excellence, offering high-quality, innovative solutions that empower our clients to achieve their goals. By staying ahead of industry trends and continually refining our skills, we ensure the best possible service for every project.
-            </p>
+          <Row className="g-4 justify-content-center">
+            <Col xl={6} lg={8} className="mb-4 mb-lg-0">
+              <Card className="h-100 shadow-sm border-0">
+                <Card.Body className="p-4">
+                  <h3 className="fw-bold text-warning mb-4 fs-4">
+                    <span className="border-bottom border-2 border-warning">Our Mission</span>
+                  </h3>
+                  <p className="text-secondary fs-5">
+                    Deliver high-quality, innovative solutions that empower businesses through cutting-edge web design, 
+                    training, and digital strategies. We stay ahead of industry trends to ensure exceptional service.
+                  </p>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            <Col xl={6} lg={8}>
+              <Card className="h-100 shadow-sm border-0">
+                <Card.Body className="p-4">
+                  <h3 className="fw-bold text-warning mb-4 fs-4">
+                    <span className="border-bottom border-2 border-warning">Our Vision</span>
+                  </h3>
+                  <p className="text-secondary fs-5">
+                    To be the preferred digital partner recognized for transforming ideas into exceptional results. 
+                    We aim to exceed expectations and help clients achieve their digital goals.
+                  </p>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+
+          <section className="my-4 my-md-5">
+            <h3 className="display-6 fw-bold text-warning text-center mb-4">
+              Core Services
+            </h3>
+            <Row className="g-4 justify-content-center">
+              {services.map((service, index) => (
+                <Col key={index} md={6} lg={4} className="d-flex">
+                  <Card className="h-100 shadow-sm border-0 flex-fill">
+                    <Card.Body className="d-flex flex-column p-4">
+                      <div className="icon-wrapper mb-3">
+                        <div className="text-warning fs-2 mb-2">•</div>
+                      </div>
+                      <h4 className="fw-bold text-dark mb-3">{service.title}</h4>
+                      <p className="text-muted flex-grow-1">{service.description}</p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
           </section>
 
-          <section className="my-4">
-            <h3 className="text-warning fw-bold">Our Services</h3>
-            <div className="lead">
-              <div className="my-3">
-                <strong>Web Design:</strong> Creating visually appealing, user-friendly websites that communicate your brand’s story.
-              </div>
-              <div className="my-3">
-                <strong>Training:</strong> Empowering individuals and teams with the skills necessary to thrive in the digital world.
-              </div>
-              <div className="my-3">
-                <strong>Graphic and Design:</strong> Crafting striking visuals that reinforce your brand identity and engage your audience.
-              </div>
-              <div className="my-3">
-                <strong>Branding:</strong> Developing holistic branding strategies that connect with your target market and elevate your business.
-              </div>
-              <div className="my-3">
-                <strong>Social Media Management:</strong> Strategically growing your online presence with effective social media campaigns.
-              </div>
-              <div className="my-3">
-                <strong>Web Administration:</strong> Ensuring your website runs flawlessly with expert web administration services.
-              </div>
-              <div className="my-3">
-                <strong>Consultancy:</strong> Offering actionable insights and solutions to help you navigate the digital landscape.
-              </div>
+          <section className="text-center mt-5 pt-4">
+            <h3 className="fw-bold text-secondary mb-4 fs-4">
+              Connect With Our Team
+            </h3>
+            <div className="d-flex flex-wrap gap-3 justify-content-center">
+              {socialLinks.map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.href}
+                  className="btn btn-outline-warning d-flex align-items-center gap-2 rounded-pill px-4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={social.icon} className="fs-5" />
+                  <span className="d-none d-sm-inline">{social.name}</span>
+                </a>
+              ))}
             </div>
           </section>
-
-          <section className="my-4">
-            <h3 className="text-warning fw-bold">Our Vision</h3>
-            <p className="lead">
-              Our vision is to be your go-to digital partner, recognized for our commitment to excellence and delivering exceptional results. We transform ideas into reality, aiming to exceed expectations with every project we undertake.
-            </p>
-            <p className="lead">
-              Join us on our journey toward excellence, and let us help you achieve your digital goals. Together, we can create something extraordinary.
-            </p>
-          </section>
-
-          {/* Social Media Icons */}
-          <section className="my-4">
-            <div className="text-center mt-5">
-              <h2 className="fw-bold text-secondary mb-3">Connect with Us</h2>
-              <div className="d-flex justify-content-center">
-                {[ 
-                  { href: 'https://wa.me/yourNumber', icon: faWhatsapp },
-                  { href: 'https://www.tiktok.com/@yourUsername', icon: faTiktok },
-                  { href: 'https://www.instagram.com/yourUsername', icon: faInstagram },
-                  { href: 'https://www.facebook.com/yourUsername', icon: faFacebook },
-                  { href: 'https://t.me/yourUsername', icon: faTelegram },
-                  { href: 'https://www.linkedin.com/in/yourUsername', icon: faLinkedin },
-                  { href: 'https://yourWorkspace.slack.com', icon: faSlack },
-                  { href: 'https://discord.gg/yourInviteCode', icon: faDiscord }
-                ].map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.href}
-                    className="text-warning mx-3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FontAwesomeIcon icon={social.icon} size="2x" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
-        </div>
+        </Container>
       </section>
     </>
   );

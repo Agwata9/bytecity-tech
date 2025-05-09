@@ -1,383 +1,249 @@
-/* Define Root Variables for Consistency */
+/* Unified CSS Variables */
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #f7a800;
-  --dark-color: #343a40;
+  --primary-color: #ff7f00; /* Orange as primary */
+  --secondary-color: #343a40; /* Dark for contrast */
+  --accent-color: #ffa500; /* Brighter orange */
   --light-color: #f8f9fa;
-  --hover-color: #e68a00;
-  --font-family: Arial, Helvetica, sans-serif;
-  --spacing-small: 10px;
-  --spacing-medium: 20px;
-  --spacing-large: 40px;
-  --orange: #ff7f00; /* Orange color for highlights */
+  --dark-color: #212529;
+  --text-dark: #1a1a1a;
+  --text-light: #ffffff;
+  --success-color: #28a745;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-/* General Styles */
+/* Base Styles */
 body {
-  font-family: var(--font-family);
-  color: var(--dark-color);
-  margin: 0;
-  padding: 0;
-}
-
-.centered-app-content {
-  max-width: 70%;
-  margin: 0 auto;
-}
-
-/* Navbar */
-.navbar {
-  background-color: var(--dark-color);
-}
-
-.navbar-brand,
-.nav-link {
-  color: #fff !important;
-}
-
-.nav-hover {
-  color: #fff;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.nav-hover:hover {
-  color: var(--secondary-color);
-  transform: scale(1.1);
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
-}
-
-/* Hero Section */
-.hero {
-  height: 70vh;
-  background: url("/hero.png") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  text-align: left;
-  padding: var(--spacing-large);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  color: #fff;
-  margin-bottom: var(--spacing-medium);
-}
-
-.hero p {
-  font-size: 1.2rem;
-  color: #fff;
-}
-
-/* Services Section */
-#services {
-  padding: var(--spacing-large) 0;
-}
-
-#services .card {
-  background-color: var(--light-color);
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#services .card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--secondary-color);
-  margin-bottom: var(--spacing-small);
-}
-
-#services .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Footer */
-footer {
-  background-color: var(--dark-color);
-  color: #fff;
-  padding: var(--spacing-large) 0;
-  text-align: center;
-}
-
-footer a {
-  color: #fff;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: var(--secondary-color);
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-  color: var(--dark-color);
-}
-
-p {
-  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  #services .card-title {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero {
-    height: auto;
-    padding: var(--spacing-medium);
-  }
-
-  #services {
-    padding: var(--spacing-medium) 0;
-  }
-}
-
-/* Our Services Section */
-.our-services {
-  padding: 2rem 0;
-}
-
-.service-card {
-  background-color: white;
-  border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-}
-
-.service-card img {
-  border-radius: 10px 10px 0 0;
-}
-
-.service-card .p-4 {
-  padding: 1.5rem;
-}
-
-/* Orange Checkmark for Service Lists */
-.service-list .list-group-item {
-  font-size: 1.2rem;
-}
-
-.service-list .list-group-item .me-3 {
-  margin-right: 0.75rem;
-}
-
-.service-list .list-group-item .check-icon {
-  color: var(--orange);
-}
-
-.service-list h2 {
-  font-size: 2rem;
-  color: var(--orange);
-  font-weight: bold;
-  text-align: center;
-}
-
-.service-list p {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #6c757d;
-}
-
-/* Responsive Adjustments for Service Cards */
-@media (max-width: 768px) {
-  .our-services h1 {
-    font-size: 2rem;
-  }
-
-  .our-services p {
-    font-size: 1.1rem;
-  }
-
-  .service-card {
-    padding: 1.5rem;
-  }
-}
-
-/* Training Section Styles */
-.training-section img.training-image {
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.training-section h2 {
-  color: var(--secondary-color);
-  font-weight: bold;
-  margin-bottom: var(--spacing-small);
-}
-
-.training-section p {
-  color: #6c757d;
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-medium);
-}
-
-.training-section .btn-warning {
-  padding: 0.5rem 1.5rem;
-  font-weight: bold;
-  border-radius: 0.3rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 576px) {
-  .training-section {
-    text-align: center;
-  }
-
-  .training-section img.training-image {
-    margin-bottom: var(--spacing-small);
-  }
-}
-/* Training Section Styles */
-.training {
-  background-color: #f8f9fa;
-}
-
-img.training-image {
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-h3 {
-  font-size: 1.8rem;
-}
-
-p {
-  font-size: 1rem;
-}
-
-
-/* Heroes */
-.hero {
+/* Unified Hero Section */
+.hero-section {
   position: relative;
-  text-align: center;
-  color: white;
+  padding: var(--spacing-xl) 0;
+  min-height: 60vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 60vh; /* Adjust as needed for consistency */
+  background-size: cover;
+  background-position: center;
 }
 
-.hero .overlay {
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.hero .hero-content {
+.hero-content {
   position: relative;
   z-index: 1;
+  color: var(--text-light);
 }
 
-.hero .btn-warning {
-  color: white;
-  background-color: orange;
-  border-color: orange;
+/* Service Cards */
+.service-card {
+  background: var(--text-light);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  box-shadow: var(--box-shadow);
+  height: 100%;
 }
 
-.hero .btn-warning:hover {
-  background-color: #ffcc00;
-  border-color: #ffcc00;
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255, 127, 0, 0.15);
 }
 
-
-.text-orange {
-  color: orange;
+.service-icon {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
 }
 
-.bg-orange {
-  background-color: orange;
+/* Pricing Badges */
+.price-badge {
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 20px;
+  font-weight: bold;
 }
 
-.card {
-  border-radius: 12px;
+/* Unified Button Styles */
+.btn-primary {
+  background: var(--primary-color);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  transition: var(--transition);
 }
 
-.card-title {
-  font-size: 1.25rem;
+.btn-primary:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
 }
 
-.card-text {
-  font-size: 0.95rem;
+.btn-outline-primary {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
-.table th,
-.table td {
+/* Navigation */
+.navbar {
+  background: var(--secondary-color) !important;
+}
+
+.nav-link {
+  color: var(--text-light) !important;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Social Links */
+.social-link {
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* Training Section */
+.training-card {
+  border-left: 4px solid var(--primary-color);
+  background: var(--light-color);
+}
+
+/* Unified Section Styling */
+.section-header {
   text-align: center;
-  vertical-align: middle;
+  margin-bottom: var(--spacing-lg);
 }
 
-.navbar-nav .nav-link:hover {
-  color: #ffa500; /* orange hover effect */
-}
-.navbar-nav .nav-dropdown-item:hover {
-  background-color: #343a40; /* darker background on hover */
-}
-
-
-/* Custom Carousel Size */
-.custom-carousel img {
-  max-height: 350px; /* Adjusted carousel image height */
-  object-fit: cover;
-}
-
-/* Scrolling Text Container */
-.offer-scroll-container {
-  height: 200px; /* Adjust the height of the scrolling area */
-  overflow: hidden;
+.section-header h2 {
+  color: var(--primary-color);
   position: relative;
+  padding-bottom: var(--spacing-sm);
 }
 
-.offer-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  animation: scroll-up 10s linear infinite;
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
 }
 
-.offer-list li {
-  font-size: 1.1rem;
-  padding: 10px 0;
-  white-space: nowrap;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 40vh;
+    text-align: center;
+  }
+  
+  .service-card {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .navbar-nav {
+    margin-top: var(--spacing-sm);
+  }
 }
 
-/* Keyframe for Scrolling Text Effect */
-@keyframes scroll-up {
+@media (max-width: 576px) {
+  :root {
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+/* Animation Helpers */
+.hover-effect {
+  transition: var(--transition);
+}
+
+.hover-effect:hover {
+  transform: translateY(-3px);
+}
+
+/* Utility Classes */
+.rounded {
+  border-radius: var(--border-radius) !important;
+}
+
+.shadow {
+  box-shadow: var(--box-shadow) !important;
+}
+
+.bg-accent {
+  background: var(--light-color);
+}
+
+.text-accent {
+  color: var(--primary-color) !important;
+}
+
+/* Hero Section Animations */
+.hero-content {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
   from {
-    transform: translateY(100%); /* Start from below the container */
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: translateY(-100%); /* Scroll to the top */
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Blinking Emoji */
-.blinking {
-  animation: blink 1s step-start infinite;
+.word-transition {
+  display: inline-block;
+  color: #ffc107;
+  position: relative;
+  animation: wordSlide 0.8s ease-out;
 }
 
-/* Keyframe for Blinking Emoji */
-@keyframes blink {
-  50% {
+@keyframes wordSlide {
+  from {
     opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-effect {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
   }
 }

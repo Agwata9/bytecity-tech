@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FaCheckCircle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 
 const Services: React.FC = () => {
-    const navigate = useNavigate(); // Hook to navigate to different pages
+    const navigate = useNavigate();
 
     const services = [
         {
@@ -13,90 +13,93 @@ const Services: React.FC = () => {
             steps: [
                 { title: 'Website Design and Development' },
                 { title: 'E-commerce Integration' },
-                { title: 'Website Maintenance and Updates' }
+                { title: 'Website Maintenance' }
             ],
-            route: '/web-design' // Route for Web Development page
+            route: '/web-design'
         },
         {
             title: 'Graphic & Design',
             image: 'graphic-design.png',
             steps: [
-                { title: 'Branding and Logo Design' },
-                { title: 'Print Design' },
-                { title: 'Digital Design' }
+                { title: 'Branding & Logo Design' },
+                { title: 'Print & Digital Design' },
+                { title: 'Marketing Materials' }
             ],
-            route: '/graphic-design' // Route for Graphic & Design page
+            route: '/graphic-design'
         },
         {
             title: 'Social Media Management',
             image: 'social-media-management.png',
             steps: [
-                { title: 'Social Media Strategy' },
-                { title: 'Content Creation' },
-                { title: 'Community Management' }
+                { title: 'Content Strategy' },
+                { title: 'Community Management' },
+                { title: 'Analytics & Reporting' }
             ],
-            route: '/social-media-management' // Route for Social Media Management page
+            route: '/social-media-management'
         }
     ];
 
     return (
-        <section
-            className="py-5 bg-light"
+        <section className="py-5 position-relative" 
             style={{
-                minHeight: '60vh',
-                backgroundImage: 'url("accordion-bg01.png")',
+                background: `linear-gradient(rgba(255, 159, 0, 0.1), rgba(255, 159, 0, 0.05)), url("accordion-bg01.png")`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                color: '#1a1a1a',
-            }}
-        >
-            <Container>
-                <h2 className="fw-bold text-warning mb-3 text-center">
-                    Explore Our Services
-                </h2>
-                <hr style={{ width: '60px', margin: '0 auto', borderTop: '3px solid #ffc107' }} />
-                <Row className="text-center mt-4">
+                backgroundPosition: 'center'
+            }}>
+            <Container className="position-relative z-index-1">
+                <div className="text-center mb-4 mb-md-5">
+                    <h2 className="display-5 fw-bold text-primary mb-3">
+                        Our Core Services
+                    </h2>
+                    <div className="d-flex justify-content-center mb-4">
+                        <hr className="w-25 border-2 border-primary opacity-75" />
+                    </div>
+                    <p className="lead text-muted mx-auto" style={{ maxWidth: '600px' }}>
+                        Comprehensive digital solutions tailored to boost your online presence
+                    </p>
+                </div>
+
+                <Row className="g-4 justify-content-center">
                     {services.map((service, index) => (
-                        <Col md={4} key={index} className="mb-4">
-                            <Card className="h-100 shadow border-0 rounded">
-                                <Card.Body className="d-flex flex-column">
-                                    <img
-                                        src={service.image}
-                                        alt={service.title}
-                                        className="mb-3 img-fluid rounded"
-                                        style={{
-                                            objectFit: 'cover',
-                                            height: '200px',
-                                            width: '100%',
-                                            borderRadius: '10px',
-                                        }}
-                                    />
-                                    <Card.Title className="fw-bold text-warning mb-3">{service.title}</Card.Title>
-                                    <ul className="list-unstyled">
+                        <Col key={index} xl={4} lg={6} md={6} sm={12} className="d-flex">
+                            <Card className="h-100 shadow-sm border-0 flex-fill hover-effect">
+                                <Card.Body className="d-flex flex-column p-4">
+                                    <div className="mb-4 text-center">
+                                        <img
+                                            src={service.image}
+                                            alt={service.title}
+                                            className="img-fluid rounded-3 mb-3"
+                                            style={{
+                                                height: '180px',
+                                                width: '100%',
+                                                objectFit: 'contain'
+                                            }}
+                                        />
+                                        <h3 className="fw-bold text-primary mb-3 fs-4">
+                                            {service.title}
+                                        </h3>
+                                    </div>
+                                    
+                                    <ul className="list-unstyled flex-grow-1">
                                         {service.steps.map((step, stepIndex) => (
-                                            <li key={stepIndex} className="d-flex align-items-start mb-3">
+                                            <li key={stepIndex} className="d-flex align-items-start mb-2">
                                                 <FaCheckCircle
-                                                    color="#ffc107"
+                                                    color="var(--primary-color)"
                                                     size={20}
-                                                    className="me-2"
+                                                    className="me-2 flex-shrink-0"
                                                 />
-                                                <div>
-                                                    <h6 className="fw-bold text-secondary">{step.title}</h6>
-                                                </div>
+                                                <span className="text-secondary">{step.title}</span>
                                             </li>
                                         ))}
                                     </ul>
-                                    <div className="mt-auto">
-                                        <Button
-                                            variant="warning"
-                                            className="w-100 py-2"
-                                            style={{ fontWeight: 'bold', textTransform: 'uppercase' }}
-                                            onClick={() => navigate(service.route)} // Navigate to the specific route
-                                        >
-                                            Learn More
-                                        </Button>
-                                    </div>
+
+                                    <Button
+                                        variant="outline-primary"
+                                        className="fw-bold mt-4 rounded-pill"
+                                        onClick={() => navigate(service.route)}
+                                    >
+                                        Explore Service
+                                    </Button>
                                 </Card.Body>
                             </Card>
                         </Col>

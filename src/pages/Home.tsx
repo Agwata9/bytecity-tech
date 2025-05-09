@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Hero from "../components/Hero";
-import Discover from "../components/Discover";
 import Services from "../components/Services";
 import Message from "../components/Message";
 import WhyUs from "../components/WhyUs";
@@ -12,7 +11,7 @@ import CustomAccordion from "../components/CustomAccordion";
 const Home: React.FC = () => {
   const [showHireUsModal, setShowHireUsModal] = useState(false);
 
-  const handleShowModal = () => setShowHireUsModal(true);
+ 
   const handleCloseModal = () => setShowHireUsModal(false);
 
   const handleDataSubmit = (data: any) => {
@@ -24,7 +23,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Hero />
-      <Discover onHireUsClick={handleShowModal} /> {/* Pass the function here */}
+    
       <CustomAccordion />
       <Services />
       <Message />
