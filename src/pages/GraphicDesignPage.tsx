@@ -6,21 +6,21 @@ import {
   Card,
   CardContent,
   Button,
-  Badge,
+  Avatar,
+  Divider,
 } from '@mui/material';
 import {
-  FaPaintBrush,
   FaSwatchbook,
   FaBoxOpen,
   FaPencilAlt,
   FaBullhorn,
+  FaBuilding,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 interface Service {
   title: string;
   description: string;
-  price: string;
   route: string;
   icon: React.ReactNode;
 }
@@ -57,31 +57,14 @@ const ServiceCard: React.FC<{ service: Service; navigate: (route: string) => voi
           {service.description}
         </Typography>
 
-        <Box sx={{ textAlign: 'center', mb: 2 }}>
-          <Badge
-            badgeContent={service.price}
-            color="warning"
-            sx={{
-              '& .MuiBadge-badge': {
-                fontSize: '0.875rem',
-                px: 2,
-                py: 1,
-                borderRadius: '16px',
-                color: 'text.primary',
-                backgroundColor: 'warning.main',
-              },
-            }}
-          />
-        </Box>
-
         <Button
           variant="outlined"
           color="warning"
           fullWidth
-          sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}
+          sx={{ fontWeight: 'bold', textTransform: 'uppercase', mt: 2 }}
           onClick={() => navigate(service.route)}
         >
-          Get Started
+          Learn More
         </Button>
       </CardContent>
     </Card>
@@ -95,14 +78,12 @@ const GraphicDesignPage: React.FC = () => {
     {
       title: 'Logo Design',
       description: 'Custom, unique logos designed to represent your brand.',
-      price: 'Ksh 10,000 - Ksh 60,000',
       route: '/logo-design',
       icon: <FaSwatchbook />,
     },
     {
       title: 'Branding & Corporate Identity',
       description: 'Complete branding solutions to create a strong brand presence.',
-      price: 'Ksh 20,000 - Ksh 50,000',
       route: '/branding-corporate-identity',
       icon: <FaSwatchbook />,
     },
@@ -110,14 +91,12 @@ const GraphicDesignPage: React.FC = () => {
       title: 'Packaging Design',
       description:
         'Innovative packaging solutions that protect your product and enhance brand recognition.',
-      price: 'Ksh 8,000 - Ksh 30,000',
       route: '/packaging-design',
       icon: <FaBoxOpen />,
     },
     {
       title: 'Business Cards & Stationery',
       description: 'Design business cards and stationery that align with your brand.',
-      price: 'Ksh 3,000 - Ksh 10,000',
       route: '/business-cards-stationery',
       icon: <FaSwatchbook />,
     },
@@ -125,7 +104,6 @@ const GraphicDesignPage: React.FC = () => {
       title: 'Illustration and Sketching',
       description:
         'Hand-crafted illustrations and conceptual sketches for various applications.',
-      price: 'Ksh 5,000 - Ksh 25,000',
       route: '/illustration-sketching',
       icon: <FaPencilAlt />,
     },
@@ -133,47 +111,56 @@ const GraphicDesignPage: React.FC = () => {
       title: 'Advertising and Marketing Design',
       description:
         'Comprehensive design solutions for advertising campaigns and marketing materials.',
-      price: 'Ksh 10,000 - Ksh 60,000',
       route: '/advertising-marketing-design',
       icon: <FaBullhorn />,
     },
   ];
 
+  const handleRequestQuote = () => {
+    // Navigate to a quote request page or open a dialog/modal
+    navigate('/request-quote');
+  };
+
   return (
-    <Box sx={{ py: 3, bgcolor: 'background.default' }}>
-      <Box
+    <Box
+      sx={{
+        bgcolor: "warning.main",
+        py: { xs: 6, md: 10 },
+        color: "common.white",
+        textAlign: "center",
+        position: "relative",
+        mb: 6,
+      }}
+    >
+      <Avatar
         sx={{
-          py: 5,
-          bgcolor: 'warning.light',
-          textAlign: 'center',
+          bgcolor: "common.white",
+          color: "warning.main",
+          width: 80,
+          height: 80,
+          mx: "auto",
+          mb: 2,
+          boxShadow: 3,
         }}
       >
-        <FaPaintBrush size={48} color="#ff9800" />
-        <Typography
-          variant="h3"
-          sx={{ fontWeight: 'bold', color: 'warning.main', mt: 2 }}
-        >
-          Professional Design Solutions
-        </Typography>
-        <Box
-          sx={{
-            width: '25%',
-            height: '4px',
-            bgcolor: 'warning.main',
-            mx: 'auto',
-            my: 2,
-          }}
-        />
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{ maxWidth: 600, mx: 'auto' }}
-        >
-          End-to-end design services covering branding, marketing, and product
-          presentation needs.
-        </Typography>
-      </Box>
-
+        <FaBuilding size={40} />
+      </Avatar>
+      <Typography variant="h3" fontWeight="bold" gutterBottom>
+        ByteCity Tech
+      </Typography>
+      <Typography variant="h6" sx={{ opacity: 0.9, mb: 2 }}>
+        Where innovation meets excellence in digital solutions
+      </Typography>
+      <Divider
+        sx={{
+          width: 80,
+          mx: "auto",
+          borderBottomWidth: 3,
+          borderColor: "common.white",
+          opacity: 0.5,
+          mb: 2,
+        }}
+      />
       <Container sx={{ mt: 4 }}>
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography
@@ -212,6 +199,21 @@ const GraphicDesignPage: React.FC = () => {
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} navigate={navigate} />
           ))}
+        </Box>
+
+        <Box sx={{ mt: 6, textAlign: 'center' }}>
+          <Typography variant="h5" sx={{ mb: 2, color: 'warning.main', fontWeight: 'bold' }}>
+            Ready to request a quote?
+          </Typography>
+          <Button
+            variant="contained"
+            color="warning"
+            size="large"
+            sx={{ fontWeight: 'bold', textTransform: 'uppercase' }}
+            onClick={handleRequestQuote}
+          >
+            Request Quote
+          </Button>
         </Box>
       </Container>
     </Box>

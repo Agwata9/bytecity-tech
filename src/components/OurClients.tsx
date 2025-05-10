@@ -1,163 +1,102 @@
 import React from 'react';
-import {
-  Box,
-  Typography,
-  Divider,
-  useTheme,
-  useMediaQuery,
-  Container,
-  Avatar,
-  Skeleton,
-  Stack
-} from '@mui/material';
+import { Box, Typography, Container, Divider, Stack } from '@mui/material';
 
-const clients = [
-  { name: 'Die Cast', logo: '/clients/diecast.png' },
-  { name: 'TechCorp', logo: '/clients/techcorp.png' },
-  { name: 'Creative Solutions', logo: '/clients/creative.png' },
-  { name: 'Digital Ventures', logo: '/clients/digital.png' },
-  { name: 'Zone 254', logo: '/clients/Zone254.png' },
-  { name: 'Beyond Classroom', logo: '/clients/beyondcr.png' },
-  { name: 'Chiral', logo: '/clients/chiral.png' },
+interface Client {
+  name: string;
+  logo: string;
+}
+
+const clients: Client[] = [
+  { name: 'Diecast', logo: '/clients/diecast.png' },
+  { name: 'Holiday Hype', logo: '/clients/holiday_hype.png' },
+  { name: 'Roxiie', logo: '/clients/roxiie.png' },
+  { name: 'Safaricom', logo: '/clients/safcom.png' },
+  { name: 'KCB Bank', logo: '/clients/kcb.png' },
+  { name: 'Nairobi Hospital', logo: '/clients/nbohos.png' },
 ];
 
-const fallbackLogo = '/clients/default-logo.png';
-const backgroundImage = '/clients/background.jpg';
-
-const OurClients = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [loadingStates, setLoadingStates] = React.useState<Record<number, boolean>>(
-    clients.reduce((acc, _, index) => ({ ...acc, [index]: true }), {})
-  );
-  const [errorStates, setErrorStates] = React.useState<Record<number, boolean>>(
-    clients.reduce((acc, _, index) => ({ ...acc, [index]: false }), {})
-  );
-
-  const handleImageLoad = (index: number) => {
-    setLoadingStates(prev => ({ ...prev, [index]: false }));
-  };
-
-  const handleImageError = (index: number) => {
-    setLoadingStates(prev => ({ ...prev, [index]: false }));
-    setErrorStates(prev => ({ ...prev, [index]: true }));
-  };
-
+export const  OurClients : React.FC = () => {
   return (
-    <Box
-      sx={{
-        position: 'relative',
+    <Box 
+      id="clients" 
+      component="section"
+      sx={{ 
         py: 8,
-        minHeight: '50vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.6)',
-          zIndex: 1,
-        },
+        bgcolor: 'common.white',
+        borderTop: 1, 
+        borderColor: 'divider' 
       }}
     >
-      <Container sx={{ position: 'relative', zIndex: 2 }}>
-        <Typography
-          variant="h3"
-          component="h2"
-          sx={{
-            color: theme.palette.warning.main,
-            fontWeight: 700,
-            mb: 3,
-            textAlign: 'center',
-            textShadow: '1px 1px 3px rgba(0,0,0,0.5)',
-          }}
-        >
-          Valued Clients
-        </Typography>
+      <Container maxWidth="md">
+        <Stack spacing={4} alignItems="center">
+          <Typography 
+            variant="h4" 
+            textAlign="center" 
+            fontWeight={800}
+            color="text.primary"
+          >
+            Trusted By Industry Leaders
+          </Typography>
 
-        <Divider
-          sx={{
-            width: 60,
-            height: 4,
-            backgroundColor: theme.palette.warning.main,
-            mb: 6,
-            mx: 'auto',
-          }}
-        />
+          <Divider sx={{ width: 80, height: 4, bgcolor: 'primary.main' }} />
 
-        <Stack
-          direction="row"
-          flexWrap="wrap"
-          justifyContent="center"
-          spacing={4}
-          sx={{ gap: 4 }}
-        >
-          {clients.map((client, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 2,
-              }}
-            >
-              {loadingStates[index] && (
-                <Skeleton
-                  variant="rounded"
-                  width={isMobile ? theme.spacing(8) : theme.spacing(12)}
-                  height={isMobile ? theme.spacing(8) : theme.spacing(12)}
-                />
-              )}
-
-              <Avatar
-                alt={client.name}
-                src={errorStates[index] ? fallbackLogo : client.logo}
-                variant="rounded"
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { 
+                xs: 'repeat(2, 1fr)', 
+                sm: 'repeat(3, 1fr)', 
+                md: 'repeat(6, 1fr)' 
+              },
+              gap: 4,
+              width: '100%',
+              alignItems: 'center',
+              justifyItems: 'center'
+            }}
+          >
+            {clients.map((client, index) => (
+              <Box
+                key={index}
                 sx={{
-                  width: isMobile ? theme.spacing(8) : theme.spacing(12),
-                  height: isMobile ? theme.spacing(8) : theme.spacing(12),
+                  width: '100%',
+                  height: 100,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  p: 2,
                   transition: 'all 0.3s ease',
-                  backgroundColor: theme.palette.background.paper,
-                  display: loadingStates[index] ? 'none' : 'flex',
+                  borderRadius: 2,
                   '&:hover': {
                     transform: 'scale(1.1)',
-                    boxShadow: theme.shadows[6],
-                  },
+                    boxShadow: 2,
+                    bgcolor: 'background.default'
+                  }
                 }}
-                imgProps={{
-                  loading: 'lazy',
-                  onLoad: () => handleImageLoad(index),
-                  onError: () => handleImageError(index),
-                }}
-              />
-
-              {!isMobile && (
-                <Typography
-                  variant="body1"
+              >
+                <Box
+                  component="img"
+                  src={client.logo}
+                  alt={`${client.name} logo`}
                   sx={{
-                    color: 'common.white',
-                    fontWeight: 500,
-                    textAlign: 'center',
+                    maxWidth: '100%',
+                    maxHeight: 80,
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    filter: 'grayscale(100%)',
+                    opacity: 0.8,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      filter: 'grayscale(0%)',
+                      opacity: 1
+                    }
                   }}
-                >
-                  {client.name}
-                </Typography>
-              )}
-            </Box>
-          ))}
+                />
+              </Box>
+            ))}
+          </Box>
         </Stack>
       </Container>
     </Box>
   );
 };
-
-export default OurClients;
