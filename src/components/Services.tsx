@@ -4,7 +4,6 @@ import {
     Typography,
     Card,
     CardContent,
-    CardMedia,
     Button,
     Divider,
     List,
@@ -22,7 +21,6 @@ import { useNavigate } from 'react-router-dom';
 const services = [
     {
         title: 'Web Development',
-        image: 'web-development.png',
         steps: [
             { title: 'Website Design and Development' },
             { title: 'E-commerce Integration' },
@@ -32,7 +30,6 @@ const services = [
     },
     {
         title: 'Graphic & Design',
-        image: 'graphic-design.png',
         steps: [
             { title: 'Branding & Logo Design' },
             { title: 'Print & Digital Design' },
@@ -42,7 +39,6 @@ const services = [
     },
     {
         title: 'Social Media Management',
-        image: 'social-media-management.png',
         steps: [
             { title: 'Content Strategy' },
             { title: 'Community Management' },
@@ -120,19 +116,6 @@ const Services: React.FC = () => {
                                         bgcolor: theme.palette.background.paper,
                                     }}
                                 >
-                                    {service.image && (
-                                        <CardMedia
-                                            component="img"
-                                            image={service.image}
-                                            alt={service.title}
-                                            sx={{
-                                                height: 160,
-                                                objectFit: 'contain',
-                                                borderRadius: '16px 16px 0 0',
-                                                bgcolor: theme.palette.warning.light,
-                                            }}
-                                        />
-                                    )}
                                     <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                                         <Typography
                                             variant="h6"
